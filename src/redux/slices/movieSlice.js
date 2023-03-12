@@ -30,14 +30,19 @@ export const fetchInitMovies = createAsyncThunk(
 );
 
 const initialState = {
-  movies: [1],
+  movies: [],
   status: "pending",
 };
 
 const moviesSlice = createSlice({
   name: "movies",
   initialState,
-  reducers: {},
+  reducers: {
+    searchMovie(state, action) {
+      console.log(action.payload)
+      console.log(fetchInitMovies(action.payload))
+    },
+  },
   extraReducers: {
     [fetchInitMovies.pending]: (state) => {
       state.status = "pending";
@@ -56,6 +61,6 @@ const moviesSlice = createSlice({
 
 export const selectMovies = (state) => state.movies;
 
-export const {} = moviesSlice.actions;
+export const { searchMovie } = moviesSlice.actions;
 
 export default moviesSlice.reducer;
