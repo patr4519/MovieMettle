@@ -25,13 +25,15 @@ function App() {
         <div>Loading</div>
       ) : (
         <div className="cardList">
-          <ul>
-            {movies.map((item, index) => (
-              <li key={index}>
-                <CardItem />
-              </li>
-            ))}
-          </ul>
+          {movies.map((item, index) => (
+            <CardItem
+            poster={item.Poster}
+            runtime={item.Runtime}
+            country={item.Country} 
+            year={item.Year}
+            genre={item.Genre}
+            key={index} />
+          ))}
         </div>
       )}
     </div>
