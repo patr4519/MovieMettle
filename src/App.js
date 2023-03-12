@@ -13,6 +13,18 @@ function App() {
     dispatch(fetchInitMovies());
   };
 
+  const cardList = movies.map((item, index) => (
+    <CardItem
+      title={item.Title}
+      poster={item.Poster}
+      runtime={item.Runtime}
+      country={item.Country}
+      year={item.Year}
+      genre={item.Genre}
+      key={index}
+    />
+  ));
+
   React.useState(() => {
     getInitMovies();
   }, []);
@@ -21,20 +33,11 @@ function App() {
     <div className="App">
       <MainInput />
 
-      {status === "pending" ? (
-        <div>Loading</div>
+      {status === "rejected" ? (
+        <div>Error</div>
       ) : (
         <div className="cardList">
-          {movies.map((item, index) => (
-            <CardItem
-            title={item.Title}
-            poster={item.Poster}
-            runtime={item.Runtime}
-            country={item.Country} 
-            year={item.Year}
-            genre={item.Genre}
-            key={index} />
-          ))}
+          {status === "pending" ? <div>Loading</div> : cardList}
         </div>
       )}
     </div>

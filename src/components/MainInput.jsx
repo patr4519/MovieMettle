@@ -1,7 +1,7 @@
 const MainInput = () => {
     return (
         <div className="mainInput">
-            <input placeholder='Input movie'/>
+            <input placeholder='Movie title...'/>
         </div>
     );
 }
