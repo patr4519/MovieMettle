@@ -1,0 +1,31 @@
+.movieCard {
+  display: flex;
+  width: 200px;
+  flex-direction: column;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.moviePoster {
+  width: 200px;
+  height: 200px;
+}
+
+.movieInfo {
+  padding: 20px;
+}
+
+.movieTitle {
+  margin-top: 0;
+}
+
+.movieDetails {
+  margin: 0;
+}
+
+.year,
+.genre,
+.country,
+.duration {
+  font-weight: bold;
+}

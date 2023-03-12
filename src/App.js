@@ -1,9 +1,9 @@
 import React from "react";
-import CardList from "./components/CardList";
+import CardList from "./components/CardItem";
 import MainInput from "./components/MainInput";
 
 const apiKey = "9fc0fef8";
-const movieTitle = "Coca";
+const movieTitle = "Coco";
 const initialMovies = ["The Green Mile", "Schindler's List", "The Shawshank Redemption", "Coco", "Interstellar", "Pulp Fiction", "Back to the Future", "The Lord of the Rings: The Fellowship of the Ring", "Fight Club"];
 
 async function getInitialMovies() {
