@@ -9,7 +9,7 @@ function App() {
   const dispatch = useDispatch();
   const { movies, status } = useSelector(selectMovies);
 
-  const getInitMovies = async () => {
+  const getInitMovies = () => {
     dispatch(fetchInitMovies());
   };
 
@@ -27,6 +27,7 @@ function App() {
         <div className="cardList">
           {movies.map((item, index) => (
             <CardItem
+            title={item.Title}
             poster={item.Poster}
             runtime={item.Runtime}
             country={item.Country} 

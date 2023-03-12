@@ -1,6 +1,6 @@
 import styles from "./CardItem.module.scss";
 
-const CardItem = ({year, genre, country, runtime, poster}) => {
+const CardItem = ({year, genre, country, runtime, poster, title}) => {
   return (
     <div className={styles.movieCard}>
       <img
@@ -9,7 +9,7 @@ const CardItem = ({year, genre, country, runtime, poster}) => {
         className={styles.moviePoster}
       />
       <div className={styles.movieInfo}>
-        <h2 className={styles.movieTitle}>Movie Title</h2>
+        <h2 className={styles.movieTitle}>{title}</h2>
         <p className={styles.movieDetails}>
           Year: <span className={styles.year}>{year}</span>
         </p>
