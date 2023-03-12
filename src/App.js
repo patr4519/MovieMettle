@@ -8,17 +8,18 @@ const initialMovies = ["The Green Mile", "Schindler's List", "The Shawshank Rede
 
 async function getInitialMovies() {
   try {
-    const response = await fetch(
-      `http://www.omdbapi.com/?t=${movieTitle}&apikey=${apiKey}`
-    );
-    const data = await response.json();
-    console.log(data);
+    let requests = initialMovies.map(item => fetch(`http://www.omdbapi.com/?t=${item}&apikey=${apiKey}`));
+    let repsonses = await Promise.all(requests);
+    let items = await Promise.all(repsonses.map(r => r.json()));
+    console.log(items);
   } catch (error) {
     console.error(error);
   }
 }
 
 function App() {
+  const [items, setItems] = React.useState([]);
+
   React.useEffect(() => {
     getInitialMovies();
   }, [])
