@@ -9,8 +9,13 @@ const MainInput = () => {
 
   const inputHandler = () => {
     dispatch(fetchMovie(inputValue));
-    setInputValue('');
+    setInputValue("");
   };
+
+  let visibleSearch = false;
+  if (inputValue.length > 0) {
+    visibleSearch = true;
+  }
 
   return (
     <div className="mainInput">
@@ -19,12 +24,14 @@ const MainInput = () => {
         onChange={(e) => setInputValue(e.target.value)}
         placeholder="Movie title..."
       />
-      <img 
-      onClick={inputHandler} 
-      src={searchIcon}
-      alt='searchIcon'
-      width={25}
-      height={25}
+      <img
+        onClick={inputHandler}
+        // className="searchIcon"
+        className={`searchIcon ${visibleSearch ? 'visible' : ''}`}
+        src={searchIcon}
+        alt="searchIcon"
+        width={25}
+        height={25}
       />
     </div>
   );
