@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const initialMovies = [
   "The Green Mile",
@@ -17,14 +18,15 @@ export const fetchInitMovies = createAsyncThunk(
   "movies/fetchMoviesStatus",
   async () => {
     try {
-      let requests = initialMovies.map((item) =>
-        fetch(`http://www.omdbapi.com/?t=${item}&apikey=${apiKey}`)
+      const requests = initialMovies.map((item) =>
+        axios.get(`http://www.omdbapi.com/?t=${item}&apikey=${apiKey}`)
       );
-      let repsonses = await Promise.all(requests);
-      let items = await Promise.all(repsonses.map((r) => r.json()));
+      const responses = await Promise.all(requests);
+      const items = responses.map((r) => r.data);
       return items;
     } catch (error) {
       console.error(error);
+      throw error;
     }
   }
 );

@@ -37,7 +37,7 @@ function App() {
         <div>Error</div>
       ) : (
         <div className="cardList">
-          {status === "pending" ? <div>Loading</div> : cardList}
+          {status === "pending" ? <div>Loading...</div> : cardList}
         </div>
       )}
     </div>
