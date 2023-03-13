@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CardItem from "./components/CardItem";
+import Header from "./components/Header";
 import MainInput from "./components/MainInput";
 import { fetchInitMovies } from "./redux/slices/movieSlice";
 import { selectMovies } from "./redux/slices/movieSlice";
@@ -30,8 +31,8 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <MainInput />
-
       {status === "rejected" ? (
         <div>Error</div>
       ) : (
