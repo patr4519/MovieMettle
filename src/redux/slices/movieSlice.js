@@ -31,6 +31,20 @@ export const fetchInitMovies = createAsyncThunk(
   }
 );
 
+export const fetchMovie = createAsyncThunk(
+  "movies/fetchMoviesStatus",
+  async (inputValue) => {
+    try {
+      const request = await axios.get(`http://www.omdbapi.com/?t=${inputValue}&apikey=${apiKey}`);
+      console.log(request.data);
+      return [request.data];
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+);
+
 const initialState = {
   movies: [],
   status: "pending",
@@ -41,8 +55,8 @@ const moviesSlice = createSlice({
   initialState,
   reducers: {
     searchMovie(state, action) {
-      console.log(action.payload)
-      console.log(fetchInitMovies(action.payload))
+      state.movies = [action.payload];
+      console.log(state.movies)
     },
   },
   extraReducers: {
@@ -63,6 +77,6 @@ const moviesSlice = createSlice({
 
 export const selectMovies = (state) => state.movies;
 
-export const { searchMovie } = moviesSlice.actions;
+// export const { searchMovie } = moviesSlice.actions;
 
 export default moviesSlice.reducer;

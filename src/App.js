@@ -8,7 +8,6 @@ import { selectMovies } from "./redux/slices/movieSlice";
 function App() {
   const dispatch = useDispatch();
   const { movies, status } = useSelector(selectMovies);
-
   const getInitMovies = () => {
     dispatch(fetchInitMovies());
   };
