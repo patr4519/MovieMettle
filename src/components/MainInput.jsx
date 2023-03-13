@@ -1,22 +1,33 @@
-import React from 'react'
-import { useDispatch } from 'react-redux';
-import { fetchMovie } from '../redux/slices/movieSlice';
-// import { searchMovie } from '../redux/slices/movieSlice';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { fetchMovie } from "../redux/slices/movieSlice";
+import searchIcon from "../img/searchIcon.svg";
 
 const MainInput = () => {
-    const [inputValue, setInputValue] = React.useState('');
-    const dispatch = useDispatch();
+  const [inputValue, setInputValue] = React.useState("");
+  const dispatch = useDispatch();
 
-    const inputHandler = (e) => {
-        setInputValue(e.target.value)
-    }
+  const inputHandler = () => {
+    dispatch(fetchMovie(inputValue));
+    setInputValue('');
+  };
 
-    return (
-        <div className="mainInput">
-            <input value={inputValue} onChange={inputHandler} placeholder='Movie title...'/>
-            <button onClick={() => dispatch(fetchMovie(inputValue))}>Go</button>
-        </div>
-    );
-}
+  return (
+    <div className="mainInput">
+      <input
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        placeholder="Movie title..."
+      />
+      <img 
+      onClick={inputHandler} 
+      src={searchIcon}
+      alt='searchIcon'
+      width={25}
+      height={25}
+      />
+    </div>
+  );
+};
 
 export default MainInput;
