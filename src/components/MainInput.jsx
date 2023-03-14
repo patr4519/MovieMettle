@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { fetchMovies, fetchMovie } from "../redux/slices/movieSlice";
+import { fetchMovies } from "../redux/slices/movieSlice";
 
 const MainInput = () => {
   const [inputValue, setInputValue] = React.useState("");
