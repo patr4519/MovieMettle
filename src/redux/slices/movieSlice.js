@@ -14,31 +14,23 @@ const initialMovies = [
 ];
 const apiKey = "9fc0fef8";
 
-export const fetchInitMovies = createAsyncThunk(
-  "movies/fetchMoviesStatus",
-  async () => {
-    try {
-      const requests = initialMovies.map((item) =>
-        axios.get(`http://www.omdbapi.com/?t=${item}&apikey=${apiKey}`)
-      );
-      const responses = await Promise.all(requests);
-      const items = responses.map((r) => r.data);
-      return items;
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  }
-);
-
-export const fetchMovie = createAsyncThunk(
+export const fetchMovies = createAsyncThunk(
   "movies/fetchMoviesStatus",
   async (inputValue) => {
     try {
-      const request = await axios.get(
-        `http://www.omdbapi.com/?t=${inputValue}&apikey=${apiKey}`
-      );
-      return [request.data];
+      if (inputValue) {
+        const request = await axios.get(
+          `http://www.omdbapi.com/?t=${inputValue}&apikey=${apiKey}`
+        );
+        return [request.data];
+      } else {
+        const requests = initialMovies.map((item) =>
+          axios.get(`http://www.omdbapi.com/?t=${item}&apikey=${apiKey}`)
+        );
+        const responses = await Promise.all(requests);
+        const items = responses.map((r) => r.data);
+        return items;
+      }
     } catch (error) {
       console.error(error);
       throw error;
@@ -56,15 +48,15 @@ const moviesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchInitMovies.fulfilled, (state, action) => {
+    builder.addCase(fetchMovies.fulfilled, (state, action) => {
       state.status = "fulfilled";
       state.movies = action.payload;
     });
-    builder.addCase(fetchInitMovies.pending, (state) => {
+    builder.addCase(fetchMovies.pending, (state) => {
       state.status = "pending";
       state.movies = [];
     });
-    builder.addCase(fetchInitMovies.rejected, (state) => {
+    builder.addCase(fetchMovies.rejected, (state) => {
       state.status = "rejected";
       state.movies = [];
     });

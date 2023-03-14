@@ -3,15 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import CardItem from "./components/CardItem";
 import Header from "./components/Header";
 import MainInput from "./components/MainInput";
-import { fetchInitMovies } from "./redux/slices/movieSlice";
+import { fetchMovies } from "./redux/slices/movieSlice";
 import { selectMovies } from "./redux/slices/movieSlice";
 
 function App() {
   const dispatch = useDispatch();
   const { movies, status } = useSelector(selectMovies);
-  const getInitMovies = () => {
-    dispatch(fetchInitMovies());
-  };
 
   const cardList = movies.map((item, index) => (
     <CardItem
@@ -26,7 +23,7 @@ function App() {
   ));
 
   React.useState(() => {
-    getInitMovies();
+    dispatch(fetchMovies());
   }, []);
 
   return (

@@ -1,20 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { fetchMovie } from "../redux/slices/movieSlice";
+import { fetchMovies, fetchMovie } from "../redux/slices/movieSlice";
 
 const MainInput = () => {
   const [inputValue, setInputValue] = React.useState("");
   const dispatch = useDispatch();
 
   const inputHandler = () => {
-    dispatch(fetchMovie(inputValue));
+    dispatch(fetchMovies(inputValue));
     setInputValue("");
   };
-
-  let visibleSearch = false;
-  if (inputValue.length > 0) {
-    visibleSearch = true;
-  }
 
   return (
     <div className="mainInput">
