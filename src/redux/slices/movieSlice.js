@@ -39,7 +39,7 @@ export const fetchMovies = createAsyncThunk(
 );
 
 const initialState = {
-  movies: [],
+  items: [],
   status: "idle",
 };
 
@@ -50,15 +50,15 @@ const moviesSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchMovies.fulfilled, (state, action) => {
       state.status = "fulfilled";
-      state.movies = action.payload;
+      state.items = action.payload;
     });
     builder.addCase(fetchMovies.pending, (state) => {
       state.status = "pending";
-      state.movies = [];
+      state.items = [];
     });
     builder.addCase(fetchMovies.rejected, (state) => {
       state.status = "rejected";
-      state.movies = [];
+      state.items = [];
     });
   },
 });

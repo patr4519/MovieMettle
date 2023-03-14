@@ -8,10 +8,10 @@ import { selectMovies } from "./redux/slices/movieSlice";
 
 function App() {
   const dispatch = useDispatch();
-  const { movies, status } = useSelector(selectMovies);
+  const { items, status } = useSelector(selectMovies);
 
-  const cardList = movies.map((item, index) => (
-    <CardItem
+  const cardList = items.map((item, index) => {
+    return <CardItem
       title={item.Title}
       poster={item.Poster}
       runtime={item.Runtime}
@@ -21,7 +21,7 @@ function App() {
       ratings={item.Ratings}
       key={index}
     />
-  ));
+  });
 
   React.useState(() => {
     dispatch(fetchMovies());
