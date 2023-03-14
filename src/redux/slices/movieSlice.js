@@ -35,7 +35,9 @@ export const fetchMovie = createAsyncThunk(
   "movies/fetchMoviesStatus",
   async (inputValue) => {
     try {
-      const request = await axios.get(`http://www.omdbapi.com/?t=${inputValue}&apikey=${apiKey}`);
+      const request = await axios.get(
+        `http://www.omdbapi.com/?t=${inputValue}&apikey=${apiKey}`
+      );
       return [request.data];
     } catch (error) {
       console.error(error);
@@ -46,36 +48,29 @@ export const fetchMovie = createAsyncThunk(
 
 const initialState = {
   movies: [],
-  status: "pending",
+  status: "idle",
 };
 
 const moviesSlice = createSlice({
   name: "movies",
   initialState,
-  reducers: {
-    // searchMovie(state, action) {
-    //   state.movies = [action.payload];
-    //   console.log(state.movies)
-    // },
-  },
-  extraReducers: {
-    [fetchInitMovies.pending]: (state) => {
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchInitMovies.fulfilled, (state, action) => {
+      state.status = "fulfilled";
+      state.movies = action.payload;
+    });
+    builder.addCase(fetchInitMovies.pending, (state) => {
       state.status = "pending";
       state.movies = [];
-    },
-    [fetchInitMovies.fulfilled]: (state, action) => {
-      state.movies = action.payload;
-      state.status = "filfilled";
-    },
-    [fetchInitMovies.rejected]: (state) => {
-      state.movies = [];
+    });
+    builder.addCase(fetchInitMovies.rejected, (state) => {
       state.status = "rejected";
-    },
+      state.movies = [];
+    });
   },
 });
 
 export const selectMovies = (state) => state.movies;
-
-// export const { searchMovie } = moviesSlice.actions;
 
 export default moviesSlice.reducer;
