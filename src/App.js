@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CardItem from "./components/CardItem";
 import Header from "./components/Header";
 import MainInput from "./components/MainInput";
+import NotFoundCard from "./components/NotFoundCard";
 import Skeleton from "./components/Skeleton";
 import { fetchMovies } from "./redux/slices/movieSlice";
 import { selectMovies } from "./redux/slices/movieSlice";
@@ -31,7 +32,7 @@ function App() {
 
       return cardList;
     } else {
-      return <h2>Not found</h2>;
+      return <NotFoundCard />
     }
   }
 
