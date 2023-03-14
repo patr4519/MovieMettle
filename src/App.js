@@ -18,6 +18,7 @@ function App() {
       country={item.Country}
       year={item.Year}
       genre={item.Genre}
+      ratings={item.Ratings}
       key={index}
     />
   ));
