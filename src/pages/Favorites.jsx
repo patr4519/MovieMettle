@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import CardItem from "../components/CardItem";
+import CardFav from "../components/CardFav";
 import { selectFavorites } from "../redux/slices/favoritesSlice";
 
 const Favorites = () => {
@@ -8,7 +8,7 @@ const Favorites = () => {
 
   const cardList = items.map((item, index) => {
     return (
-      <CardItem
+      <CardFav
         item={item}
         title={item.Title}
         poster={item.Poster}
