@@ -1,4 +1,6 @@
 import styles from "./CardItem.module.scss";
+import { useSelector, useDispatch } from "react-redux";
+
 
 const CardItem = ({
   year,
@@ -9,6 +11,9 @@ const CardItem = ({
   title,
   ratings,
 }) => {
+  const dispatch = useDispatch();
+
+
   let imd;
   let rt;
   let metacritic;
@@ -48,6 +53,7 @@ const CardItem = ({
           Metacritic: <span className={styles.bold}>{metacritic}</span>
         </p>
       </div>
+      <button>F</button>
     </div>
   );
 };

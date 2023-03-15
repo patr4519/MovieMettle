@@ -4,6 +4,9 @@ import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 import Favorites from "./pages/Favorites";
 
+// mockAPI: accForRedmi3pro@gmail.com 
+// https://64116313e96e5254e2d3e6c8.mockapi.io/favorites
+
 function App() {
   return (
     <div className="wrapper">
