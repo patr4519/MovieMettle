@@ -16,6 +16,7 @@ function Home() {
       const cardList = items.map((item, index) => {
         return (
           <CardItem
+            item={item}
             title={item.Title}
             poster={item.Poster}
             runtime={item.Runtime}
@@ -27,7 +28,7 @@ function Home() {
           />
         );
       });
-
+      
       return cardList;
     } else {
       return <NotFoundCard />;

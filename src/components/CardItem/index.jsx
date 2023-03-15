@@ -1,8 +1,10 @@
 import styles from "./CardItem.module.scss";
 import { useSelector, useDispatch } from "react-redux";
+import { add } from "../../redux/slices/favoritesSlice";
 
 
 const CardItem = ({
+  item,
   year,
   genre,
   country,
@@ -53,7 +55,7 @@ const CardItem = ({
           Metacritic: <span className={styles.bold}>{metacritic}</span>
         </p>
       </div>
-      <button>F</button>
+      <button onClick={() => dispatch(add(item))}>F</button>
     </div>
   );
 };
