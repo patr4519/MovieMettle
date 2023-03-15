@@ -1,7 +1,6 @@
 import styles from "./CardFav.module.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { add } from "../../redux/slices/favoritesSlice";
-
+import { useDispatch } from "react-redux";
+import { remove } from "../../redux/slices/favoritesSlice";
 
 const CardFav = ({
   item,
@@ -14,7 +13,6 @@ const CardFav = ({
   ratings,
 }) => {
   const dispatch = useDispatch();
-
 
   let imd;
   let rt;
@@ -55,8 +53,7 @@ const CardFav = ({
           Metacritic: <span className={styles.bold}>{metacritic}</span>
         </p>
       </div>
-      <button onClick={() => dispatch(add(item))}>Remove</button>
-      {/* <button onClick={() => dispatch(add(item))}>F</button> */}
+      <button onClick={() => dispatch(remove(item.Title))}>Remove</button>
     </div>
   );
 };

@@ -1,5 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   items: [],
@@ -12,11 +11,14 @@ const favoritesSlice = createSlice({
     add: (state, action) => {
       state.items.push(action.payload);
     },
+    remove: (state, action) => {
+      state.items = state.items.filter((obj) => obj.Title !== action.payload);
+    },
   },
 });
 
 export const selectFavorites = (state) => state.favorites;
 
-export const { add } = favoritesSlice.actions;
+export const { add, remove } = favoritesSlice.actions;
 
 export default favoritesSlice.reducer;
