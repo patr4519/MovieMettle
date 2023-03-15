@@ -13,7 +13,6 @@ function Home() {
 
   function response(items) {
     if (items.every((obj) => obj.Response === "True")) {
-
       const cardList = items.map((item, index) => {
         return (
           <CardItem
@@ -31,7 +30,7 @@ function Home() {
 
       return cardList;
     } else {
-      return <NotFoundCard />
+      return <NotFoundCard />;
     }
   }
 
