@@ -27,12 +27,20 @@ header {
   .favorites {
     display: flex;
     align-items: center;
+    position: relative;
 
     a {
       font-size: 20px;
       text-decoration: none;
       color: #333;
       margin-left: 10px;
+    }
+
+    .favCount {
+      font-size: 15px;
+      position: absolute;
+      top: -1px;
+      right: -9px;
     }
   }
 }
