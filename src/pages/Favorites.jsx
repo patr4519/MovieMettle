@@ -22,7 +22,12 @@ const Favorites = () => {
     );
   });
 
-  return <>{cardList}</>;
+  return (
+    <div className="fav-wrapper">
+      <h3>Your favorites film(s):</h3>
+      {cardList}
+    </div>
+  );
 };
 
 export default Favorites;
