@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import CardFav from "../components/CardFav";
+import EmptyFavorites from "../components/EmptyFavorites";
 import { selectFavorites } from "../redux/slices/favoritesSlice";
 
 const Favorites = () => {
@@ -24,7 +25,7 @@ const Favorites = () => {
 
   return (
     <div className="fav-wrapper">
-      <h3>Your favorites film(s):</h3>
+      {items.length > 0 ? <h3>Your favorites film(s):</h3> : <EmptyFavorites />}
       {cardList}
     </div>
   );
