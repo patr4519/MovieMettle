@@ -4,6 +4,7 @@ import CardItem from "../components/CardItem";
 import MainInput from "../components/MainInput";
 import NotFoundCard from "../components/NotFoundCard";
 import Skeleton from "../components/Skeleton";
+import { fetchFavorites } from "../redux/slices/favoritesSlice";
 import { fetchMovies } from "../redux/slices/movieSlice";
 import { selectMovies } from "../redux/slices/movieSlice";
 
@@ -28,15 +29,19 @@ function Home() {
           />
         );
       });
-      
+
       return cardList;
     } else {
       return <NotFoundCard />;
     }
   }
 
+  const getInitData = async () => {
+    dispatch(fetchMovies()).then(dispatch(fetchFavorites()));
+  };
+
   React.useState(() => {
-    dispatch(fetchMovies());
+    getInitData();
   }, []);
 
   return (

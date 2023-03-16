@@ -1,6 +1,7 @@
 import styles from "./CardItem.module.scss";
 import { useDispatch } from "react-redux";
 import { add } from "../../redux/slices/favoritesSlice";
+import axios from "axios";
 
 const CardItem = ({
   item,
@@ -13,6 +14,14 @@ const CardItem = ({
   ratings,
 }) => {
   const dispatch = useDispatch();
+
+  const addFavorite = async (item) => {
+    const { data } = await axios.post(
+      "https://64116313e96e5254e2d3e6c8.mockapi.io/favorites",
+      item
+    );
+    dispatch(add(data));
+  };
 
   let imd;
   let rt;
@@ -53,7 +62,7 @@ const CardItem = ({
           Metacritic: <span className={styles.bold}>{metacritic}</span>
         </p>
       </div>
-      <button onClick={() => dispatch(add(item))}>F</button>
+      <button onClick={() => addFavorite(item)}>F</button>
     </div>
   );
 };
