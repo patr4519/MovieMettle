@@ -37,10 +37,15 @@ header {
     }
 
     .favCount {
-      font-size: 15px;
+      font-size: 13px;
       position: absolute;
       top: -1px;
-      right: -9px;
+      right: -18px;
+      background-color: #1abc9c;
+      border-radius: 15px;
+      padding: 2px;
+      min-width: 20px;
+      text-align: center;
     }
   }
 }
