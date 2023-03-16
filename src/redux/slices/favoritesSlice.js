@@ -9,8 +9,8 @@ const favoritesSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action) => {
-      const index = state.items.findIndex((obj) => obj.Title === action.payload.Title);
-      if (index !== -1) {
+      const findTitle = state.items.some((obj) => obj.Title === action.payload.Title);
+      if (findTitle) {
         return;
       } else {
         state.items.push(action.payload);
