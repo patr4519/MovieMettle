@@ -1,7 +1,6 @@
 import styles from "./CardItem.module.scss";
 import { useDispatch } from "react-redux";
 import { add } from "../../redux/slices/favoritesSlice";
-import axios from "axios";
 
 const CardItem = ({
   item,
@@ -15,12 +14,22 @@ const CardItem = ({
 }) => {
   const dispatch = useDispatch();
 
-  const addFavorite = async (item) => {
-    const { data } = await axios.post(
-      "https://64116313e96e5254e2d3e6c8.mockapi.io/favorites",
-      item
-    );
-    dispatch(add(data));
+  const addToFav = (item) => {
+    let favArr = JSON.parse(localStorage.getItem("favorites"));
+    if (favArr !== null) {
+      favArr = JSON.parse(localStorage.getItem("favorites"));
+      const findTitle = favArr.some((obj) => obj.Title === item.Title);
+      if (findTitle) {
+        return;
+      } else {
+        favArr.push(item);
+        localStorage.setItem("favorites", JSON.stringify(favArr));
+      }
+    } else {
+      localStorage.setItem("favorites", JSON.stringify([item]));
+    }
+
+    dispatch(add(item));
   };
 
   let imd;
@@ -62,7 +71,7 @@ const CardItem = ({
           Metacritic: <span className={styles.bold}>{metacritic}</span>
         </p>
       </div>
-      <button onClick={() => addFavorite(item)}>F</button>
+      <button onClick={() => addToFav(item)}>F</button>
     </div>
   );
 };

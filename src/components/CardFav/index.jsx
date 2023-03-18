@@ -14,6 +14,14 @@ const CardFav = ({
 }) => {
   const dispatch = useDispatch();
 
+  const removeCard = (title) => {
+    let favArr = JSON.parse(localStorage.getItem("favorites"));
+    let newArr = favArr.filter((obj) => obj.Title !== title)
+    localStorage.setItem("favorites", JSON.stringify(newArr));
+
+    dispatch(remove(title));
+  };
+
   let imd;
   let rt;
   let metacritic;
@@ -53,7 +61,8 @@ const CardFav = ({
           Metacritic: <span className={styles.bold}>{metacritic}</span>
         </p>
       </div>
-      <button onClick={() => dispatch(remove(item.Title))}>Remove</button>
+      <button onClick={() => removeCard(item.Title)}>Remove</button>
+      {/* <button onClick={() => dispatch(remove(item.Title))}>Remove</button> */}
     </div>
   );
 };

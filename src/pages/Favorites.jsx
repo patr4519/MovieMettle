@@ -6,7 +6,6 @@ import { selectFavorites } from "../redux/slices/favoritesSlice";
 
 const Favorites = () => {
   const { items } = useSelector(selectFavorites);
-
   const cardList = items.map((item, index) => {
     return (
       <CardFav
