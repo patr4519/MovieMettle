@@ -120,6 +120,7 @@ button[type="submit"]:hover {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  
   .sortBy {
     font-size: 18px;
   }
@@ -129,10 +130,10 @@ button[type="submit"]:hover {
     li {
       background-color: #ececec;
       padding: 3px;
-      // border: 1px solid black;
       border-radius: 4px;
       margin: 2px 2px;
       list-style-type: none;
+      user-select: none;
     }
   }
 }
