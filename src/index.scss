@@ -103,3 +103,14 @@ button[type="submit"]:hover {
     margin-bottom: 10px;
   }
 }
+
+.form-container {
+  border: 1px solid black;
+  padding: 5px;
+  display: flex;
+
+  div {
+    background-color: #1abc9c;
+    padding: 3px;
+  }
+}
