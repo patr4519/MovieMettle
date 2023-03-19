@@ -60,22 +60,3 @@ function Home() {
 }
 
 export default Home;
-
-
-// let arr = [
-//   {Title: 'W'},
-//   {Title: 'The Green Mile'},
-//   {Title: 'Schindler\'s List'},
-//   {Title: 'A'},
-//   {Title: 'The Shawshank Redemption'}
-//  ];
-
-//  function compareByTitle(a, b) {
-//   let titleA = a.Title.toUpperCase();
-//   let titleB = b.Title.toUpperCase();
-//   return titleA.localeCompare(titleB)
-// }
-
-// arr.sort(compareByTitle);
-
-// console.log(arr);

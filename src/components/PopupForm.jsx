@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { sortBy } from "../redux/slices/favoritesSlice";
 
 export const list = [
   { name: "Order", sortProperty: "order" },
@@ -8,11 +10,16 @@ export const list = [
 ];
 
 const MyPopupForm = () => {
-  const [open, setOpen] = React.useState(true);
+  const [open] = React.useState(true);
   const [category, setCategory] = React.useState("Order");
+  const dispatch = useDispatch();
+
+  const changeCategory = (title) => {
+    setCategory(title)
+    dispatch(sortBy(title))
+  }
 
   return (
-    // <div onClick={() => setOpen((prev) => !prev)} className="sort_popup">
     <div className="sort_popup">
       <div>
         <span className="sortBy">Sort by:</span>
@@ -22,7 +29,7 @@ const MyPopupForm = () => {
         <ul>
           {list.map((obj, i) => {
             return (
-              <li onClick={() => setCategory(obj.name)} key={i}>
+              <li onClick={() => changeCategory(obj.name)} key={i}>
                 {obj.name}
               </li>
             );
