@@ -27,6 +27,9 @@ const favoritesSlice = createSlice({
       if (action.payload === 'Duration') {
         state.items = state.items.sort(sortByDuration)
       }
+      if (action.payload === 'Order') {
+        // return initialState;
+      }
     }
   },
 });
