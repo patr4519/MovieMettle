@@ -28,12 +28,12 @@ const favoritesSlice = createSlice({
       if (action.payload === "Duration") {
         state.items = state.items.sort(sortByDuration);
       }
+      if (action.payload === "Date") {
+        state.items = state.items.sort(compareByDate);
+      }
       if (action.payload === "Order") {
         const favorites = JSON.parse(localStorage.getItem("favorites"));
         state.items = favorites;
-      }
-      if (action.payload === "Date") {
-        state.items = state.items.sort(compareByDate);
       }
     },
   },

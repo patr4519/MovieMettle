@@ -8,7 +8,6 @@ import { selectFavorites } from "../redux/slices/favoritesSlice";
 const Favorites = () => {
   const { items } = useSelector(selectFavorites);
   const cardList = items.map((item, index) => {
-
     return (
       <CardFav
         item={item}
@@ -26,14 +25,17 @@ const Favorites = () => {
 
   return (
     <div className="fav-wrapper">
-      {items.length > 0 ? <h3>Your favorites film(s):</h3> : <EmptyFavorites />}
-      <MyPopupForm />
-      {cardList}
+      {items.length > 0 ? (
+        <>
+          <h3>Your favorites film(s):</h3>
+          <MyPopupForm />
+          {cardList}
+        </>
+      ) : (
+        <EmptyFavorites />
+      )}
     </div>
   );
 };
 
 export default Favorites;
-
-      
-
