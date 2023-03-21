@@ -29,6 +29,11 @@ export const fetchMovies = createAsyncThunk(
         );
         const responses = await Promise.all(requests);
         const items = responses.map((r) => r.data);
+        items.forEach(item => {
+          if (item.hasOwnProperty('addedToFav') === false) {
+            item.addedToFav = false;
+          }
+        })
         return items;
       }
     } catch (error) {

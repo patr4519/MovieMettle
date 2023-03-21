@@ -25,6 +25,7 @@ function Home() {
             year={item.Year}
             genre={item.Genre}
             ratings={item.Ratings}
+            addedToFav={item.addedToFav}
             key={index}
           />
         );

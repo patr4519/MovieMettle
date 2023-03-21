@@ -11,6 +11,7 @@ const CardItem = ({
   poster,
   title,
   ratings,
+  addedToFav
 }) => {
   const dispatch = useDispatch();
 
