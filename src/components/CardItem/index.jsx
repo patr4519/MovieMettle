@@ -1,6 +1,10 @@
 import styles from "./CardItem.module.scss";
 import { useDispatch } from "react-redux";
 import { add } from "../../redux/slices/favoritesSlice";
+import favItem from "../../img/favItem.png";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Toast from "../Toast";
 
 const CardItem = ({
   item,
@@ -11,7 +15,6 @@ const CardItem = ({
   poster,
   title,
   ratings,
-  addedToFav
 }) => {
   const dispatch = useDispatch();
 
@@ -20,6 +23,7 @@ const CardItem = ({
     if (favArr !== null) {
       const findTitle = favArr.some((obj) => obj.Title === item.Title);
       if (findTitle) {
+        toast.warn("Already added!");
         return;
       } else {
         favArr.push(item);
@@ -30,6 +34,7 @@ const CardItem = ({
     }
 
     dispatch(add(item));
+    toast.success("Added to favorites!");
   };
 
   const displayRatings = () => {
@@ -65,7 +70,15 @@ const CardItem = ({
           <p className={styles.movieDetails}>No ratings available</p>
         )}
       </div>
-      <button onClick={() => addToFav(item)}>F</button>
+      <img
+        onClick={() => addToFav(item)}
+        className={styles.favItem}
+        width={30}
+        height={30}
+        src={favItem}
+        alt="favIcon"
+      />
+      <Toast />
     </div>
   );
 };
