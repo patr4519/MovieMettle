@@ -4,7 +4,6 @@ import { add } from "../../redux/slices/favoritesSlice";
 import favItem from "../../img/favItem.png";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Toast from "../Toast";
 
 const CardItem = ({
   item,
@@ -78,7 +77,6 @@ const CardItem = ({
         src={favItem}
         alt="favIcon"
       />
-      <Toast />
     </div>
   );
 };

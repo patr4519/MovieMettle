@@ -4,6 +4,7 @@ import CardItem from "../components/CardItem";
 import MainInput from "../components/MainInput";
 import NotFoundCard from "../components/NotFoundCard";
 import Skeleton from "../components/Skeleton";
+import Toast from "../components/Toast";
 import { add } from "../redux/slices/favoritesSlice";
 import { fetchMovies } from "../redux/slices/movieSlice";
 import { selectMovies } from "../redux/slices/movieSlice";
@@ -48,6 +49,7 @@ function Home() {
   return (
     <div className="Home">
       <MainInput />
+      <Toast />
       {status === "rejected" ? (
         <div>Error</div>
       ) : (
