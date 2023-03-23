@@ -16,21 +16,19 @@ const CardFav = ({
 
   const removeCard = (title) => {
     let favArr = JSON.parse(localStorage.getItem("favorites"));
-    let newArr = favArr.filter((obj) => obj.Title !== title)
+    let newArr = favArr.filter((obj) => obj.Title !== title);
     localStorage.setItem("favorites", JSON.stringify(newArr));
 
     dispatch(remove(title));
   };
 
-  let imd;
-  let rt;
-  let metacritic;
-
-  for (let i = 0; i < ratings.length; i++) {
-    imd = ratings[0]?.Value;
-    rt = ratings[1]?.Value;
-    metacritic = ratings[2]?.Value;
-  }
+  const displayRatings = () => {
+    return ratings.map((rating, index) => (
+      <p className={styles.movieDetails} key={index}>
+        {rating.Source}: <span className={styles.bold}>{rating.Value}</span>
+      </p>
+    ));
+  };
 
   return (
     <div className={styles.movieCard}>
@@ -51,15 +49,11 @@ const CardFav = ({
         </p>
         <hr />
         <p>Ratings:</p>
-        <p className={styles.movieDetails}>
-          Internet Movie Database: <span className={styles.bold}>{imd}</span>
-        </p>
-        <p className={styles.movieDetails}>
-          Rotten Tomatoes: <span className={styles.bold}>{rt}</span>
-        </p>
-        <p className={styles.movieDetails}>
-          Metacritic: <span className={styles.bold}>{metacritic}</span>
-        </p>
+        {ratings && ratings.length >= 3 ? (
+          displayRatings()
+        ) : (
+          <p className={styles.movieDetails}>No ratings available</p>
+        )}
       </div>
       <button onClick={() => removeCard(item.Title)}>Remove</button>
     </div>
