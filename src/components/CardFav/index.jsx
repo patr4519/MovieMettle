@@ -62,7 +62,6 @@ const CardFav = ({
         </p>
       </div>
       <button onClick={() => removeCard(item.Title)}>Remove</button>
-      {/* <button onClick={() => dispatch(remove(item.Title))}>Remove</button> */}
     </div>
   );
 };
