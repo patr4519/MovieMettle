@@ -44,7 +44,7 @@ function Home() {
     }
 
     dispatch(fetchMovies());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="Home">
