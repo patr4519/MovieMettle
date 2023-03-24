@@ -9,7 +9,6 @@ const initialMovies = [
   "Interstellar",
   "Pulp Fiction",
   "Back to the Future",
-  "The Lord of the Rings: The Fellowship of the Ring",
   "Fight Club",
 ];
 const apiKey = "9fc0fef8";

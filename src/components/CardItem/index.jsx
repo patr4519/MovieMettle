@@ -4,6 +4,7 @@ import { add } from "../../redux/slices/favoritesSlice";
 import favItem from "../../img/favItem.png";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PlotModal from "../Modal";
 
 const CardItem = ({
   item,
@@ -68,6 +69,7 @@ const CardItem = ({
         ) : (
           <p className={styles.movieDetails}>No ratings available</p>
         )}
+      <PlotModal plot={item.Plot}/>
       </div>
       <img
         onClick={() => addToFav(item)}
