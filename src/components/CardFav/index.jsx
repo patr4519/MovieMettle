@@ -1,6 +1,7 @@
 import styles from "./CardFav.module.scss";
 import { useDispatch } from "react-redux";
 import { remove } from "../../redux/slices/favoritesSlice";
+import PlotModal from "../Modal";
 
 const CardFav = ({
   item,
@@ -54,8 +55,9 @@ const CardFav = ({
         ) : (
           <p className={styles.movieDetails}>No ratings available</p>
         )}
+        <PlotModal plot={item.Plot} />
       </div>
-      <button onClick={() => removeCard(item.Title)}>Remove</button>
+      <button className={styles.removeButton} onClick={() => removeCard(item.Title)}>Remove</button>
     </div>
   );
 };
