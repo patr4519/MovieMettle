@@ -64,7 +64,7 @@ const CardItem = ({
         </p>
         <hr />
         <p>Ratings:</p>
-        {ratings && ratings.length >= 3 ? (
+        {ratings && ratings.length >= 1 ? (
           displayRatings()
         ) : (
           <p className={styles.movieDetails}>No ratings available</p>
