@@ -137,3 +137,42 @@ button[type="submit"]:hover {
     }
   }
 }
+
+.ratePanel {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 25px;
+  padding: 0 10px;
+  cursor: pointer;
+
+  .rateItem {
+    transition: background-color 0.3s ease;
+  }
+
+
+  span {
+    width: 15px;
+    margin: 1px;
+    font-weight: bold;
+
+    &:hover {
+      font-size: 20px;
+      transform: scale(1);
+    }
+  }
+
+  .redRate:hover {
+    color: red;
+  }
+
+  .greyRate:hover {
+    color: grey;
+  }
+
+  .greenRate:hover {
+    color: green;
+  }
+}

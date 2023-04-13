@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./CardItem.module.scss";
 import { useDispatch } from "react-redux";
 import { add } from "../../redux/slices/favoritesSlice";
@@ -5,6 +6,7 @@ import favItem from "../../img/favItem.png";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PlotModal from "../Modal";
+import RatePanel from "../RatePanel";
 
 const CardItem = ({
   item,
@@ -17,6 +19,7 @@ const CardItem = ({
   ratings,
 }) => {
   const dispatch = useDispatch();
+  const [showRateBut, setShowBut] = React.useState(false);
 
   const addToFav = (item) => {
     let favArr = JSON.parse(localStorage.getItem("favorites"));
@@ -69,7 +72,14 @@ const CardItem = ({
         ) : (
           <p className={styles.movieDetails}>No ratings available</p>
         )}
-      <PlotModal plot={item.Plot}/>
+        <PlotModal plot={item.Plot} />
+        <button
+          onClick={() => setShowBut((prev) => !prev)}
+          className={styles.rateButton}
+        >
+          Rate the movie
+        </button>
+        {showRateBut && <RatePanel />}
       </div>
       <img
         onClick={() => addToFav(item)}
