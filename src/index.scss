@@ -140,10 +140,12 @@ button[type="submit"]:hover {
 
 .rateButton {
   width: 100px;
+  height: 25px;
 }
 
 .ratePanel {
   border: 1px solid black;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { addRate } from "../redux/slices/favoritesSlice";
 
-const RatePanel = ({ item, setShowBut }) => {
+const RatePanel = ({ item, setShowRate }) => {
   const [rate, setRate] = React.useState(null);
   const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ const RatePanel = ({ item, setShowBut }) => {
             }`}
             onClick={() => {
               handleRateClick(rate);
-              setShowBut(prev => !prev)
+              setShowRate(prev => !prev)
               dispatch(addRate({ item: item, rate }));
             }}
           >
