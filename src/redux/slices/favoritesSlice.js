@@ -1,5 +1,3 @@
-// Save changes in localStorage when addRate is worked
-
 import { createSlice } from "@reduxjs/toolkit";
 import { compareByDate } from "../../functions/sortByDate";
 import { sortByDuration } from "../../functions/sortByDuration";
