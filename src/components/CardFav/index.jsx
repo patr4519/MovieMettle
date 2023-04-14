@@ -68,7 +68,7 @@ const CardFav = ({
           </button>
         )}
         {showRate && <RatePanel item={item} setShowRate={setShowRate} />}
-        {item.rate ? <p>Your rate: <span className={`${
+        {item.rate ? <p className={styles.yourRate}>Your rate: <span className={`${
               item.rate <= 4
                 ? styles.redRate
                 : item.rate <= 6

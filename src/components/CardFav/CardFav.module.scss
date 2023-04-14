@@ -9,7 +9,7 @@
 
   .moviePoster {
     width: 250px;
-    height: 290px;
+    height: 300px;
   }
 
   .movieInfo {
@@ -49,15 +49,22 @@
     }
   }
 
+  .yourRate {
+    margin-top: 3px;
+  }
+
   .redRate {
     color: red;
+    font-weight: bold;
   }
 
   .greyRate {
     color: grey;
+    font-weight: bold;
   }
 
   .greenRate {
     color: green;
+    font-weight: bold;
   }
 }
