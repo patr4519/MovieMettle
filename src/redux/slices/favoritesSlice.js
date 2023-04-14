@@ -1,3 +1,5 @@
+// Save changes in localStorage when addRate is worked
+
 import { createSlice } from "@reduxjs/toolkit";
 import { compareByDate } from "../../functions/sortByDate";
 import { sortByDuration } from "../../functions/sortByDuration";
@@ -23,24 +25,32 @@ const favoritesSlice = createSlice({
     },
     sortBy: (state, action) => {
       if (action.payload === "Title") {
-        state.items = state.items.sort(compareByTitle);
+        state.items.sort(compareByTitle);
       }
       if (action.payload === "Duration") {
-        state.items = state.items.sort(sortByDuration);
+        state.items.sort(sortByDuration);
       }
       if (action.payload === "Date") {
-        state.items = state.items.sort(compareByDate);
+        state.items.sort(compareByDate);
       }
       if (action.payload === "Order") {
         const favorites = JSON.parse(localStorage.getItem("favorites"));
         state.items = favorites;
       }
     },
+    addRate: (state, action) => {
+      const { item, rate } = action.payload;
+      const itemToUpdate = state.items.find((obj) => obj.Title === item.Title);
+      if (itemToUpdate) {
+        itemToUpdate.rate = rate;
+      }
+      localStorage.setItem("favorites", JSON.stringify(state.items));
+    },
   },
 });
 
 export const selectFavorites = (state) => state.favorites;
 
-export const { add, remove, sortBy } = favoritesSlice.actions;
+export const { add, remove, sortBy, addRate } = favoritesSlice.actions;
 
 export default favoritesSlice.reducer;

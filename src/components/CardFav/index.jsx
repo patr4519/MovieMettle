@@ -1,7 +1,9 @@
+import React from 'react'
 import styles from "./CardFav.module.scss";
 import { useDispatch } from "react-redux";
 import { remove } from "../../redux/slices/favoritesSlice";
 import PlotModal from "../Modal";
+import RatePanel from '../RatePanel';
 
 const CardFav = ({
   item,
@@ -14,6 +16,7 @@ const CardFav = ({
   ratings,
 }) => {
   const dispatch = useDispatch();
+  const [showRateBut, setShowBut] = React.useState(false);
 
   const removeCard = (title) => {
     let favArr = JSON.parse(localStorage.getItem("favorites"));
@@ -56,6 +59,14 @@ const CardFav = ({
           <p className={styles.movieDetails}>No ratings available</p>
         )}
         <PlotModal plot={item.Plot} />
+        <button
+          onClick={() => setShowBut((prev) => !prev)}
+          className='rateButton'
+        >
+          Rate the movie
+        </button>
+        {showRateBut && <RatePanel item={item} setShowBut={setShowBut}/>}
+        {item.rate ? <p>Your rate: {item.rate}</p> : ''}
       </div>
       <button className={styles.removeButton} onClick={() => removeCard(item.Title)}>Remove</button>
     </div>

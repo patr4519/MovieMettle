@@ -138,6 +138,10 @@ button[type="submit"]:hover {
   }
 }
 
+.rateButton {
+  width: 100px;
+}
+
 .ratePanel {
   border: 1px solid black;
   display: flex;
@@ -151,7 +155,6 @@ button[type="submit"]:hover {
   .rateItem {
     transition: background-color 0.3s ease;
   }
-
 
   span {
     width: 15px;

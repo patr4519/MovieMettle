@@ -6,7 +6,6 @@ import favItem from "../../img/favItem.png";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PlotModal from "../Modal";
-import RatePanel from "../RatePanel";
 
 const CardItem = ({
   item,
@@ -19,24 +18,24 @@ const CardItem = ({
   ratings,
 }) => {
   const dispatch = useDispatch();
-  const [showRateBut, setShowBut] = React.useState(false);
 
   const addToFav = (item) => {
+    const item1 = {...item, rate: null};
     let favArr = JSON.parse(localStorage.getItem("favorites"));
     if (favArr !== null) {
-      const findTitle = favArr.some((obj) => obj.Title === item.Title);
+      const findTitle = favArr.some((obj) => obj.Title === item1.Title);
       if (findTitle) {
         toast.warn("Already added!");
         return;
       } else {
-        favArr.push(item);
+        favArr.push(item1);
         localStorage.setItem("favorites", JSON.stringify(favArr));
       }
     } else {
-      localStorage.setItem("favorites", JSON.stringify([item]));
+      localStorage.setItem("favorites", JSON.stringify([item1]));
     }
 
-    dispatch(add(item));
+    dispatch(add(item1));
     toast.success("Added to favorites!");
   };
 
@@ -73,13 +72,6 @@ const CardItem = ({
           <p className={styles.movieDetails}>No ratings available</p>
         )}
         <PlotModal plot={item.Plot} />
-        <button
-          onClick={() => setShowBut((prev) => !prev)}
-          className={styles.rateButton}
-        >
-          Rate the movie
-        </button>
-        {showRateBut && <RatePanel />}
       </div>
       <img
         onClick={() => addToFav(item)}

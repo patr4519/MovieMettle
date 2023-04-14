@@ -18,7 +18,7 @@ const Favorites = () => {
         year={item.Year}
         genre={item.Genre}
         ratings={item.Ratings}
-        key={index}
+        key={item.Title}
       />
     );
   });
