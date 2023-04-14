@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { compareByDate } from "../../functions/sortByDate";
 import { sortByDuration } from "../../functions/sortByDuration";
 import { compareByTitle } from "../../functions/sortByTitle";
+import { compareByRate } from "../../functions/soryByRate";
 
 const initialState = {
   items: [],
@@ -36,6 +37,9 @@ const favoritesSlice = createSlice({
       if (action.payload === "Order") {
         const favorites = JSON.parse(localStorage.getItem("favorites"));
         state.items = favorites;
+      }
+      if (action.payload === "Rate") {
+        state.items.sort(compareByRate)
       }
     },
     addRate: (state, action) => {

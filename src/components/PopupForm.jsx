@@ -7,6 +7,7 @@ export const list = [
   { name: "Title", sortProperty: "title" },
   { name: "Duration", sortProperty: "duration" },
   { name: "Date", sortProperty: "date" },
+  { name: "Rate", sortProperty: "rate" },
 ];
 
 const MyPopupForm = () => {
@@ -14,9 +15,9 @@ const MyPopupForm = () => {
   const [category, setCategory] = React.useState("Order");
   const dispatch = useDispatch();
 
-  const changeCategory = (title) => {
-    setCategory(title)
-    dispatch(sortBy(title))
+  const changeCategory = (name) => {
+    setCategory(name)
+    dispatch(sortBy(name))
   }
 
   return (
