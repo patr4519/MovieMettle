@@ -23,7 +23,9 @@ const RegistrationForm = ({ setSignUp }) => {
     event.preventDefault();
     try {
       await axios.post("https://64116313e96e5254e2d3e6c8.mockapi.io/Users", {
-        user: { login: login, password: password },
+        login: login,
+        password: password,
+        created: Date.now()
       });
       setSignUp((prev) => !prev);
     } catch (error) {
