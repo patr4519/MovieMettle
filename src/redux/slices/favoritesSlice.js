@@ -36,7 +36,7 @@ const favoritesSlice = createSlice({
         const favorites = JSON.parse(localStorage.getItem("favorites"));
         state.items = favorites;
       }
-      if (action.payload === "Rate") {
+      if (action.payload === "Your Rate") {
         state.items.sort(compareByRate)
       }
     },

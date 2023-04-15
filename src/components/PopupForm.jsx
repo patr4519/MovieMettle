@@ -7,7 +7,7 @@ export const list = [
   { name: "Title", sortProperty: "title" },
   { name: "Duration", sortProperty: "duration" },
   { name: "Date", sortProperty: "date" },
-  { name: "Rate", sortProperty: "rate" },
+  { name: "Your Rate", sortProperty: "rate" },
 ];
 
 const MyPopupForm = () => {
