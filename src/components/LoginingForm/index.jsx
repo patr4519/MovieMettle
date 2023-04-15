@@ -16,17 +16,14 @@ const LoginingForm = ({ setSignIn }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('hello')
-    // try {
-    //   await axios.post("https://64116313e96e5254e2d3e6c8.mockapi.io/Users", {
-    //     login: login,
-    //     password: password,
-    //     created: Date.now()
-    //   });
-    //   setSignUp((prev) => !prev);
-    // } catch (error) {
-    //   alert(error);
-    // }
+    try {
+      const { data } = await axios.get(
+        "https://64116313e96e5254e2d3e6c8.mockapi.io/Users"
+      );
+      console.log(data);
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
