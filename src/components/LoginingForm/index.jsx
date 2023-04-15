@@ -1,8 +1,8 @@
-import styles from "./RegistrationForm.module.scss";
+import styles from "./LoginingForm.module.scss";
 import React, { useState } from "react";
 import axios from "axios";
 
-const RegistrationForm = ({ setSignUp }) => {
+const LoginingForm = ({ setSignIn }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,29 +14,24 @@ const RegistrationForm = ({ setSignUp }) => {
     setPassword(event.target.value);
   };
 
-
-  // .put("https://64116313e96e5254e2d3e6c8.mockapi.io/Users/1", {
-  //   test: 'test4'
-  // })
-  // .then(() => console.log('done'))
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      await axios.post("https://64116313e96e5254e2d3e6c8.mockapi.io/Users", {
-        login: login,
-        password: password,
-        created: Date.now()
-      });
-      setSignUp((prev) => !prev);
-    } catch (error) {
-      alert(error);
-    }
+    console.log('hello')
+    // try {
+    //   await axios.post("https://64116313e96e5254e2d3e6c8.mockapi.io/Users", {
+    //     login: login,
+    //     password: password,
+    //     created: Date.now()
+    //   });
+    //   setSignUp((prev) => !prev);
+    // } catch (error) {
+    //   alert(error);
+    // }
   };
 
   return (
     <div className={styles["form-container"]}>
-      <h1>Sign Up</h1>
+      <h1>Sign In</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -52,10 +47,10 @@ const RegistrationForm = ({ setSignUp }) => {
           onChange={handlePasswordChange}
           placeholder="Password"
         />
-        <button type="submit">Register</button>
+        <button type="submit">Login</button>
         <button
           className={styles.close}
-          onClick={() => setSignUp((prev) => !prev)}
+          onClick={() => setSignIn((prev) => !prev)}
           type="submit"
         >
           Close
@@ -65,4 +60,4 @@ const RegistrationForm = ({ setSignUp }) => {
   );
 };
 
-export default RegistrationForm;
+export default LoginingForm;

@@ -6,10 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../../redux/slices/movieSlice";
 import { selectFavorites } from "../../redux/slices/favoritesSlice";
 import RegistrationForm from "../RegistrationForm";
+import LoginingForm from "../LoginingForm";
 
 const Header = () => {
   const [showSign, setShowSign] = React.useState(false);
   const [signUp, setSignUp] = React.useState(false);
+  const [signIn, setSignIn] = React.useState(false);
   const dispatch = useDispatch();
   const { items } = useSelector(selectFavorites);
   const favCount = items.length;
@@ -23,12 +25,15 @@ const Header = () => {
         <button onClick={() => setShowSign((prev) => !prev)}>Profile</button>
         {showSign && (
           <div>
-            <button>Sign In</button>
+            <button onClick={() => setSignIn(prev => !prev)}>Sign In</button>
             <button onClick={() => setSignUp(prev => !prev)}>Sign Up</button>
           </div>
         )}
         {
           signUp && <RegistrationForm setSignUp={setSignUp}/>
+        }
+        {
+          signIn && <LoginingForm setSignIn={setSignIn}/>
         }
       </div>
       <div className={styles.favorites}>
