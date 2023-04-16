@@ -27,6 +27,52 @@ header {
   .signPanel {
     display: flex;
 
+    .avatar {
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .sign {
+      position: relative;
+
+      .signIn {
+        position: absolute;
+        left: 10px;
+        width: 60px;
+        background-color: #007bff;
+        color: #fff;
+        padding: 5px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+      .signUp {
+        position: absolute;
+        right: 33px;
+        width: 60px;
+        background-color: #1abc9c;
+        color: #fff;
+        padding: 5px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #308a78;
+        }
+      }
+    }
+
     img:hover {
       cursor: pointer;
     }

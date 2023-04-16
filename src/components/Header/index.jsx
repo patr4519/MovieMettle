@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Header.module.scss";
 import favIcon from "../../img/favorites.png";
 import profile_Icon from "../../img/profile_Icon.svg";
+import avatar from "../../img/avatar.png";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../../redux/slices/movieSlice";
@@ -28,17 +29,23 @@ const Header = () => {
         {!curUser ? (
           <>
             <img
-              height={30}
+              height={25}
               onClick={() => setShowSign((prev) => !prev)}
               src={profile_Icon}
               alt="profile_Icon"
             />
             {showSign && (
-              <div>
-                <button onClick={() => setSignIn((prev) => !prev)}>
+              <div className={styles.sign}>
+                <button
+                  className={styles.signIn}
+                  onClick={() => setSignIn((prev) => !prev)}
+                >
                   Sign In
                 </button>
-                <button onClick={() => setSignUp((prev) => !prev)}>
+                <button
+                  className={styles.signUp}
+                  onClick={() => setSignUp((prev) => !prev)}
+                >
                   Sign Up
                 </button>
               </div>
@@ -47,7 +54,10 @@ const Header = () => {
             {signIn && <LoginingForm setSignIn={setSignIn} />}
           </>
         ) : (
-          <div>{curUser.login}</div>
+          <div className={styles.avatar}>
+            <img height={45} src={avatar} alt="avatar" /> 
+            <span>{curUser.login}</span>
+          </div>
         )}
       </div>
       <div className={styles.favorites}>
