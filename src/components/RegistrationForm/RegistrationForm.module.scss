@@ -13,6 +13,16 @@
   h2 {
     margin-bottom: 5px;
   }
+
+  .eyeOpen {
+    position: absolute;
+    top: 115px;
+    right: 30px;
+
+    &:active {
+      opacity: 0.5;
+    }
+  }
 }
 
 .form-container input {
