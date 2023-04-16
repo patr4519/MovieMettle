@@ -1,10 +1,14 @@
 import styles from "./LoginingForm.module.scss";
 import React, { useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addCurUser } from "../../redux/slices/curUserSlice";
+
 
 const LoginingForm = ({ setSignIn }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const handleLoginChange = (event) => {
     setLogin(event.target.value);
@@ -20,16 +24,18 @@ const LoginingForm = ({ setSignIn }) => {
       const { data } = await axios.get(
         "https://64116313e96e5254e2d3e6c8.mockapi.io/Users"
       );
+      
       let user = null;
+
       for (let i = 0; i < data.length; i++) {
         if (data[i].login === login && data[i].password === password) {
           user = data[i];
-          console.log("User found.");
-          console.log(user);
+          dispatch(addCurUser(user))
           break;
-        } else {
-          console.log("User not found!");
         }
+      }
+      if (!user) {
+        console.log("No such user!");
       }
     } catch (error) {
       console.log(error);

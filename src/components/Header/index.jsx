@@ -46,5 +46,3 @@ const Header = () => {
 };
 
 export default Header;
-
-//  className={styles.signPanel}
