@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Header.module.scss";
 import favIcon from "../../img/favorites.png";
+import profile_Icon from "../../img/profile_Icon.svg";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../../redux/slices/movieSlice";
@@ -14,11 +15,9 @@ const Header = () => {
   const [showSign, setShowSign] = React.useState(false);
   const [signUp, setSignUp] = React.useState(false);
   const [signIn, setSignIn] = React.useState(false);
-  const { items } = useSelector(selectFavorites);
   const curUser = useSelector(selectCurUser).items[0];
+  const { items } = useSelector(selectFavorites);
   const favCount = items.length;
-
-  console.log(curUser)
 
   return (
     <header>
@@ -26,19 +25,26 @@ const Header = () => {
         <Link to="/">MovieMettle</Link>
       </div>
       <div className={styles.signPanel}>
-        <button onClick={() => setShowSign((prev) => !prev)}>Profile</button>
-        {showSign && (
-          <div>
-            <button onClick={() => setSignIn(prev => !prev)}>Sign In</button>
-            <button onClick={() => setSignUp(prev => !prev)}>Sign Up</button>
-          </div>
-        )}
-        {
-          signUp && <RegistrationForm setSignUp={setSignUp}/>
-        }
-        {
-          signIn && <LoginingForm setSignIn={setSignIn}/>
-        }
+        {!curUser ? (
+          <>
+            <button onClick={() => setShowSign((prev) => !prev)}>
+              Profile
+            </button>
+            <img onClick={() => setShowSign((prev) => !prev)} src={profile_Icon} alt="profile_Icon"/>
+            {showSign && (
+              <div>
+                <button onClick={() => setSignIn((prev) => !prev)}>
+                  Sign In
+                </button>
+                <button onClick={() => setSignUp((prev) => !prev)}>
+                  Sign Up
+                </button>
+              </div>
+            )}
+            {signUp && <RegistrationForm setSignUp={setSignUp} />}
+            {signIn && <LoginingForm setSignIn={setSignIn} />}
+          </>
+        ) : (<div>{curUser.login}</div>)}
       </div>
       <div className={styles.favorites}>
         <img width={30} className="favIcon" src={favIcon} alt="favIcon" />

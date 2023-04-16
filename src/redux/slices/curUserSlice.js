@@ -9,7 +9,6 @@ const curUserSlice = createSlice({
   initialState,
   reducers: {
     addCurUser: (state, action) => {
-      console.log('Authorized: ' + action.payload.login)
       state.items[0] = action.payload;
     },
   },
