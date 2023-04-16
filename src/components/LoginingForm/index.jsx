@@ -48,7 +48,7 @@ const LoginingForm = ({ setSignIn }) => {
 
   return (
     <div className={styles["form-container"]}>
-      <h1>Sign In</h1>
+      <h2>Sign In</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -64,7 +64,9 @@ const LoginingForm = ({ setSignIn }) => {
           onChange={handlePasswordChange}
           placeholder="Password"
         />
-        <button type="submit">Login</button>
+        <button className={styles.login} type="submit">
+          Login
+        </button>
         <button
           className={styles.close}
           onClick={() => setSignIn((prev) => !prev)}

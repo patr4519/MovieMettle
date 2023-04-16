@@ -14,12 +14,6 @@ const RegistrationForm = ({ setSignUp }) => {
     setPassword(event.target.value);
   };
 
-
-  // .put("https://64116313e96e5254e2d3e6c8.mockapi.io/Users/1", {
-  //   test: 'test4'
-  // })
-  // .then(() => console.log('done'))
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -36,7 +30,7 @@ const RegistrationForm = ({ setSignUp }) => {
 
   return (
     <div className={styles["form-container"]}>
-      <h1>Sign Up</h1>
+      <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -52,7 +46,7 @@ const RegistrationForm = ({ setSignUp }) => {
           onChange={handlePasswordChange}
           placeholder="Password"
         />
-        <button type="submit">Register</button>
+        <button className={styles.register} type="submit">Register</button>
         <button
           className={styles.close}
           onClick={() => setSignUp((prev) => !prev)}
