@@ -38,10 +38,10 @@ function Home() {
   }
 
   React.useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem("favorites"));
-    if (favorites?.length > 0) {
-      dispatch(add(favorites));
-    }
+    // const favorites = JSON.parse(localStorage.getItem("favorites"));
+    // if (favorites?.length > 0) {
+    //   dispatch(add(favorites));
+    // }
 
     dispatch(fetchMovies());
   }, [dispatch]);

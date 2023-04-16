@@ -21,19 +21,19 @@ const CardItem = ({
 
   const addToFav = (item) => {
     const item1 = {...item, rate: null};
-    let favArr = JSON.parse(localStorage.getItem("favorites"));
-    if (favArr !== null) {
-      const findTitle = favArr.some((obj) => obj.Title === item1.Title);
-      if (findTitle) {
-        toast.warn("Already added!");
-        return;
-      } else {
-        favArr.push(item1);
-        localStorage.setItem("favorites", JSON.stringify(favArr));
-      }
-    } else {
-      localStorage.setItem("favorites", JSON.stringify([item1]));
-    }
+    // let favArr = JSON.parse(localStorage.getItem("favorites"));
+    // if (favArr !== null) {
+    //   const findTitle = favArr.some((obj) => obj.Title === item1.Title);
+    //   if (findTitle) {
+    //     toast.warn("Already added!");
+    //     return;
+    //   } else {
+    //     favArr.push(item1);
+    //     localStorage.setItem("favorites", JSON.stringify(favArr));
+    //   }
+    // } else {
+    //   localStorage.setItem("favorites", JSON.stringify([item1]));
+    // }
 
     dispatch(add(item1));
     toast.success("Added to favorites!");

@@ -33,7 +33,7 @@ const Favorites = () => {
       });
       console.log("Data saved");
     } catch (error) {
-      console.error("Failed to save data:", error);
+      alert("Failed to save data", error);
     }
   };
   

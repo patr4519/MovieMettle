@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addCurUser } from "../../redux/slices/curUserSlice";
+import { add } from "../../redux/slices/favoritesSlice";
 
 const LoginingForm = ({ setSignIn }) => {
   const [login, setLogin] = useState("");
@@ -29,6 +30,9 @@ const LoginingForm = ({ setSignIn }) => {
         if (data[i].login === login && data[i].password === password) {
           user = data[i];
           dispatch(addCurUser(user));
+          if (user.favorites) {
+            dispatch(add(user.favorites))
+          }
           setSignIn((prev) => !prev);
           break;
         }
