@@ -9,10 +9,10 @@ import RegistrationForm from "../RegistrationForm";
 import LoginingForm from "../LoginingForm";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const [showSign, setShowSign] = React.useState(false);
   const [signUp, setSignUp] = React.useState(false);
   const [signIn, setSignIn] = React.useState(false);
-  const dispatch = useDispatch();
   const { items } = useSelector(selectFavorites);
   const favCount = items.length;
 
