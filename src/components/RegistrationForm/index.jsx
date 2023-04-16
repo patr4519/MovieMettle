@@ -56,7 +56,6 @@ const RegistrationForm = ({ setSignUp }) => {
           <img
             className={styles.eyeOpen}
             onClick={handleTogglePassword}
-            height={15}
             src={eyeOpen}
             alt="eye"
           />
