@@ -26,6 +26,10 @@ header {
 
   .signPanel {
     display: flex;
+
+    img:hover {
+      cursor: pointer;
+    }
   }
 
   .favorites {

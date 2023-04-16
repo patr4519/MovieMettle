@@ -27,10 +27,12 @@ const Header = () => {
       <div className={styles.signPanel}>
         {!curUser ? (
           <>
-            <button onClick={() => setShowSign((prev) => !prev)}>
-              Profile
-            </button>
-            <img onClick={() => setShowSign((prev) => !prev)} src={profile_Icon} alt="profile_Icon"/>
+            <img
+              height={30}
+              onClick={() => setShowSign((prev) => !prev)}
+              src={profile_Icon}
+              alt="profile_Icon"
+            />
             {showSign && (
               <div>
                 <button onClick={() => setSignIn((prev) => !prev)}>
@@ -44,7 +46,9 @@ const Header = () => {
             {signUp && <RegistrationForm setSignUp={setSignUp} />}
             {signIn && <LoginingForm setSignIn={setSignIn} />}
           </>
-        ) : (<div>{curUser.login}</div>)}
+        ) : (
+          <div>{curUser.login}</div>
+        )}
       </div>
       <div className={styles.favorites}>
         <img width={30} className="favIcon" src={favIcon} alt="favIcon" />
