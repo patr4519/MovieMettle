@@ -7,6 +7,7 @@ import { fetchMovies } from "../../redux/slices/movieSlice";
 import { selectFavorites } from "../../redux/slices/favoritesSlice";
 import RegistrationForm from "../RegistrationForm";
 import LoginingForm from "../LoginingForm";
+import { selectCurUser } from "../../redux/slices/curUserSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,10 @@ const Header = () => {
   const [signUp, setSignUp] = React.useState(false);
   const [signIn, setSignIn] = React.useState(false);
   const { items } = useSelector(selectFavorites);
+  const curUser = useSelector(selectCurUser).items[0];
   const favCount = items.length;
+
+  console.log(curUser)
 
   return (
     <header>
