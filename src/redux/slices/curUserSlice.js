@@ -9,7 +9,7 @@ const curUserSlice = createSlice({
   initialState,
   reducers: {
     addCurUser: (state, action) => {
-      console.log(action.payload)
+      console.log('Added in state: ' + action.payload.login)
       state.items[0] = action.payload;
     },
   },
