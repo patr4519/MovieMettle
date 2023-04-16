@@ -20,9 +20,19 @@ const LoginingForm = ({ setSignIn }) => {
       const { data } = await axios.get(
         "https://64116313e96e5254e2d3e6c8.mockapi.io/Users"
       );
-      console.log(data);
+      let user = null;
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].login === login && data[i].password === password) {
+          user = data[i];
+          console.log("User found.");
+          console.log(user);
+          break;
+        } else {
+          console.log("User not found!");
+        }
+      }
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   };
 
