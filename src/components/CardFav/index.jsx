@@ -19,10 +19,6 @@ const CardFav = ({
   const [showRate, setShowRate] = React.useState(false);
 
   const removeCard = (title) => {
-    // let favArr = JSON.parse(localStorage.getItem("favorites"));
-    // let newArr = favArr.filter((obj) => obj.Title !== title);
-    // localStorage.setItem("favorites", JSON.stringify(newArr));
-
     dispatch(remove(title));
   };
 

@@ -8,6 +8,8 @@ import Toast from "../components/Toast";
 import { add } from "../redux/slices/favoritesSlice";
 import { fetchMovies } from "../redux/slices/movieSlice";
 import { selectMovies } from "../redux/slices/movieSlice";
+import { addCurUser } from "../redux/slices/curUserSlice";
+
 
 function Home() {
   const dispatch = useDispatch();
@@ -38,11 +40,11 @@ function Home() {
   }
 
   React.useEffect(() => {
-    // const favorites = JSON.parse(localStorage.getItem("favorites"));
-    // if (favorites?.length > 0) {
-    //   dispatch(add(favorites));
-    // }
-
+    const curUser = JSON.parse(localStorage.getItem("curUser"));
+    if (curUser) {
+      dispatch(addCurUser(curUser))
+      dispatch(add(curUser.favorites))
+    }
     dispatch(fetchMovies());
   }, [dispatch]);
 

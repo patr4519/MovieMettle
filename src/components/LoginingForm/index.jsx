@@ -30,8 +30,9 @@ const LoginingForm = ({ setSignIn }) => {
         if (data[i].login === login && data[i].password === password) {
           user = data[i];
           dispatch(addCurUser(user));
+          localStorage.setItem("curUser", JSON.stringify(user));
           if (user.favorites) {
-            dispatch(add(user.favorites))
+            dispatch(add(user.favorites));
           }
           setSignIn((prev) => !prev);
           break;
@@ -41,7 +42,7 @@ const LoginingForm = ({ setSignIn }) => {
         alert("No such user or wrong password!");
       }
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 

@@ -33,8 +33,7 @@ const favoritesSlice = createSlice({
         state.items.sort(compareByDate);
       }
       if (action.payload === "Order") {
-        // const favorites = JSON.parse(localStorage.getItem("favorites"));
-        // state.items = favorites;
+        
       }
       if (action.payload === "Your Rate") {
         state.items.sort(compareByRate)
@@ -46,7 +45,6 @@ const favoritesSlice = createSlice({
       if (itemToUpdate) {
         itemToUpdate.rate = rate;
       }
-      // localStorage.setItem("favorites", JSON.stringify(state.items));
     },
   },
 });
