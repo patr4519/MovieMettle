@@ -12,6 +12,8 @@ const Favorites = () => {
   const dispatch = useDispatch();
   const { items } = useSelector(selectFavorites);
   const curUser = useSelector(selectCurUser).items[0];
+  const [enableButton, setEnableButton] = React.useState(false);
+
   const cardList = items.map((item) => {
     return (
       <CardFav
@@ -29,6 +31,7 @@ const Favorites = () => {
   });
 
   const handleSave = async () => {
+    setEnableButton(prev => !prev)
     try {
       await axios.put(
         `https://64116313e96e5254e2d3e6c8.mockapi.io/Users/${curUser.id}`,
@@ -50,9 +53,10 @@ const Favorites = () => {
         }
         break;
       }
-      console.log("Data saved");
     } catch (error) {
       alert("Failed to save data", error);
+    } finally {
+      setEnableButton(prev => !prev)
     }
   };
 
@@ -62,7 +66,7 @@ const Favorites = () => {
         <>
           <h3>Your favorites film(s):</h3>
           <MyPopupForm />
-          <button onClick={() => handleSave()}>
+          <button disabled={enableButton} onClick={() => handleSave()}>
             Save favorites on the server
           </button>
           {cardList}
