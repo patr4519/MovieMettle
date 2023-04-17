@@ -3,11 +3,13 @@ import { useSelector } from "react-redux";
 import CardFav from "../components/CardFav";
 import EmptyFavorites from "../components/EmptyFavorites";
 import MyPopupForm from "../components/PopupForm";
-import { selectFavorites } from "../redux/slices/favoritesSlice";
-import { selectCurUser } from "../redux/slices/curUserSlice";
+import { add, selectFavorites } from "../redux/slices/favoritesSlice";
+import { addCurUser, selectCurUser } from "../redux/slices/curUserSlice";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 const Favorites = () => {
+  const dispatch = useDispatch();
   const { items } = useSelector(selectFavorites);
   const curUser = useSelector(selectCurUser).items[0];
   const cardList = items.map((item) => {
@@ -34,6 +36,20 @@ const Favorites = () => {
           favorites: items,
         }
       );
+      const { data } = await axios.get(
+        "https://64116313e96e5254e2d3e6c8.mockapi.io/Users"
+      );
+      let user = null;
+
+      for (let i = 0; i < data.length; i++) {
+        user = data[i];
+        dispatch(addCurUser(user));
+        localStorage.setItem("curUser", JSON.stringify(user));
+        if (user.favorites) {
+          dispatch(add(user.favorites));
+        }
+        break;
+      }
       console.log("Data saved");
     } catch (error) {
       alert("Failed to save data", error);
