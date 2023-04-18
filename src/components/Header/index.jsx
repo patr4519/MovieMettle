@@ -3,6 +3,7 @@ import styles from "./Header.module.scss";
 import favIcon from "../../img/favorites.png";
 import profile_Icon from "../../img/profile_Icon.svg";
 import avatar from "../../img/avatar.png";
+import exit from "../../img/exit.png";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../../redux/slices/movieSlice";
@@ -55,8 +56,12 @@ const Header = () => {
           </>
         ) : (
           <div className={styles.avatar}>
-            <img height={45} src={avatar} alt="avatar" /> 
+            <img height={45} src={avatar} alt="avatar" />
             <span>{curUser.login}</span>
+            <img onClick={() => {
+              localStorage.clear();
+              window.location.reload();
+            }} width={20} className={styles.exit} src={exit} alt="exit" />
           </div>
         )}
       </div>
