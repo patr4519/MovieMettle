@@ -6,7 +6,7 @@ import eyeOpen from "../../img/eyeOpen.svg";
 const RegistrationForm = ({ setSignUp }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // Add state for password visibility
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLoginChange = (event) => {
     setLogin(event.target.value);
