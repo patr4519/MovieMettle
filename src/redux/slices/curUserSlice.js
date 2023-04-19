@@ -11,11 +11,15 @@ const curUserSlice = createSlice({
     addCurUser: (state, action) => {
       state.items[0] = action.payload;
     },
+    clearCurUser: (state, action) => {
+      console.log('clear user')
+      return initialState;
+    },
   },
 });
 
 export const selectCurUser = (state) => state.curUser;
 
-export const { addCurUser } = curUserSlice.actions;
+export const { addCurUser, clearCurUser } = curUserSlice.actions;
 
 export default curUserSlice.reducer;

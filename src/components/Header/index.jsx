@@ -10,7 +10,7 @@ import { fetchMovies } from "../../redux/slices/movieSlice";
 import { selectFavorites } from "../../redux/slices/favoritesSlice";
 import RegistrationForm from "../RegistrationForm";
 import LoginingForm from "../LoginingForm";
-import { selectCurUser } from "../../redux/slices/curUserSlice";
+import { clearCurUser, selectCurUser } from "../../redux/slices/curUserSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -60,7 +60,8 @@ const Header = () => {
             <span>{curUser.login}</span>
             <img onClick={() => {
               localStorage.clear();
-              window.location.reload();
+              // window.location.reload();
+              dispatch(clearCurUser())
             }} width={20} className={styles.exit} src={exit} alt="exit" />
           </div>
         )}
