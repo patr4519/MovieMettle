@@ -46,11 +46,14 @@ const favoritesSlice = createSlice({
         itemToUpdate.rate = rate;
       }
     },
+    clearFavorites: () => {
+      return initialState;
+    }
   },
 });
 
 export const selectFavorites = (state) => state.favorites;
 
-export const { add, remove, sortBy, addRate } = favoritesSlice.actions;
+export const { add, remove, sortBy, addRate, clearFavorites } = favoritesSlice.actions;
 
 export default favoritesSlice.reducer;

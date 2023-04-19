@@ -11,8 +11,7 @@ const curUserSlice = createSlice({
     addCurUser: (state, action) => {
       state.items[0] = action.payload;
     },
-    clearCurUser: (state, action) => {
-      console.log('clear user')
+    clearCurUser: () => {
       return initialState;
     },
   },

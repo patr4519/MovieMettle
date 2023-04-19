@@ -7,7 +7,10 @@ import exit from "../../img/exit.png";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../../redux/slices/movieSlice";
-import { selectFavorites } from "../../redux/slices/favoritesSlice";
+import {
+  clearFavorites,
+  selectFavorites,
+} from "../../redux/slices/favoritesSlice";
 import RegistrationForm from "../RegistrationForm";
 import LoginingForm from "../LoginingForm";
 import { clearCurUser, selectCurUser } from "../../redux/slices/curUserSlice";
@@ -20,6 +23,13 @@ const Header = () => {
   const curUser = useSelector(selectCurUser).items[0];
   const { items } = useSelector(selectFavorites);
   const favCount = items.length;
+
+  const logOut = () => {
+    localStorage.clear();
+    dispatch(clearCurUser());
+    dispatch(clearFavorites());
+    setShowSign(prev => !prev);
+  };
 
   return (
     <header>
@@ -58,11 +68,13 @@ const Header = () => {
           <div className={styles.avatar}>
             <img height={45} src={avatar} alt="avatar" />
             <span>{curUser.login}</span>
-            <img onClick={() => {
-              localStorage.clear();
-              // window.location.reload();
-              dispatch(clearCurUser())
-            }} width={20} className={styles.exit} src={exit} alt="exit" />
+            <img
+              onClick={logOut}
+              width={20}
+              className={styles.exit}
+              src={exit}
+              alt="exit"
+            />
           </div>
         )}
       </div>
