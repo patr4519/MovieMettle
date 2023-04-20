@@ -92,6 +92,21 @@ button[type="submit"]:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .save-button {
+    width: 200px;
+    margin-top: 5px;
+    height: 25px;
+    background-color: rgba(198, 185, 131, 0.82);
+    border: 0;
+    border-radius: 3px;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(198, 185, 131, 0.596);
+    }
+  }
 }
 
 .emptyFav {

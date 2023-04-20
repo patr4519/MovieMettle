@@ -55,8 +55,8 @@ const Favorites = () => {
         <>
           <h3>Your favorites film(s):</h3>
           <MyPopupForm />
-          <button disabled={enableButton} onClick={() => handleSave()}>
-            Save favorites on the server
+          <button className="save-button" disabled={enableButton} onClick={handleSave}>
+            {enableButton ? 'Saving...' : 'Save favorites on the server'}
           </button>
           {cardList}
         </>
