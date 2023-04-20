@@ -10,8 +10,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Toast from "../components/Toast";
 
-
-
 const Favorites = () => {
   const { items } = useSelector(selectFavorites);
   const curUser = useSelector(selectCurUser).items[0];

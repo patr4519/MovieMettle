@@ -2,6 +2,7 @@ import styles from "./RegistrationForm.module.scss";
 import React, { useState } from "react";
 import axios from "axios";
 import eyeOpen from "../../img/eyeOpen.svg";
+import timestampToDate from "../../functions/timestampToDate";
 
 const RegistrationForm = ({ setSignUp }) => {
   const [login, setLogin] = useState("");
@@ -26,7 +27,7 @@ const RegistrationForm = ({ setSignUp }) => {
       await axios.post("https://64116313e96e5254e2d3e6c8.mockapi.io/Users", {
         login: login,
         password: password,
-        created: Date.now(),
+        created: timestampToDate(Date.now()),
       });
       setSignUp((prev) => !prev);
     } catch (error) {
