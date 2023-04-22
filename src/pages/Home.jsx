@@ -6,13 +6,15 @@ import NotFoundCard from "../components/NotFoundCard";
 import Skeleton from "../components/Skeleton";
 import Toast from "../components/Toast";
 import { add } from "../redux/slices/favoritesSlice";
-import { addAdditionalMovies, fetchAdditionalMovies, fetchMovies } from "../redux/slices/movieSlice";
+import { fetchAdditionalMovies, fetchMovies } from "../redux/slices/movieSlice";
 import { selectMovies } from "../redux/slices/movieSlice";
 import { addCurUser } from "../redux/slices/curUserSlice";
+import { useRef } from 'react';
 
 function Home() {
   const dispatch = useDispatch();
   const { items, status } = useSelector(selectMovies);
+  const numMovieRef = useRef(-1);
   
   function response(items) {
     if (items.every((obj) => obj.Response === "True")) {
@@ -53,7 +55,8 @@ function Home() {
         window.innerHeight + document.documentElement.scrollTop >=
         document.documentElement.offsetHeight
       ) {
-        dispatch(fetchAdditionalMovies())
+        numMovieRef.current += 1;
+        dispatch(fetchAdditionalMovies(numMovieRef.current))
       }
     }
 
