@@ -2,6 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialMovies = [
+  "The Godfather",
+  "The Dark Knight",
+  "Forrest Gump",
   "The Green Mile",
   "Schindler's List",
   "The Shawshank Redemption",
@@ -13,11 +16,8 @@ const initialMovies = [
 ];
 
 const additionalMovies = [
-  "The Godfather",
-  "The Dark Knight",
   "The Godfather: Part II",
   "The Lord of the Rings: The Fellowship of the Ring",
-  "Forrest Gump",
   "The Silence of the Lambs",
   "The Matrix",
   "Star Wars: Episode IV - A New Hope",
@@ -56,7 +56,8 @@ const additionalMovies = [
   "It's a Wonderful Life",
   "Rear Window",
   "12 Angry Men",
-  "Psycho"
+  "Psycho",
+  "Breaking bad"
 ];
 
 const apiKey = "9fc0fef8";
@@ -89,7 +90,7 @@ export const fetchAdditionalMovies = createAsyncThunk(
   "movies/fetchAdditionalMoviesStatus",
   async (numMovies) => {
     console.log(numMovies)
-    let newList = additionalMovies.slice(numMovies, numMovies+1);
+    let newList = additionalMovies.slice(numMovies, numMovies+10);
     try {
       const requests = newList.map((item) =>
         axios.get(`http://www.omdbapi.com/?t=${item}&apikey=${apiKey}`)
