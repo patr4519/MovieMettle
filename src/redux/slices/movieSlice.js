@@ -3,17 +3,16 @@ import axios from "axios";
 import additionalMovies from "../../assets/listOfMovies";
 
 const initialMovies = [
-  "The Godfather",
-  "The Dark Knight",
-  "Forrest Gump",
-  "The Green Mile",
-  "Schindler's List",
   "The Shawshank Redemption",
-  "Coco",
-  "Interstellar",
+  "The Godfather",
+  "The Godfather: Part II",
+  "The Dark Knight",
+  "12 Angry Men",
+  "Schindler's List",
+  "The Lord of the Rings: The Return of the King",
   "Pulp Fiction",
-  "Back to the Future",
-  "Fight Club",
+  "The Lord of the Rings: The Fellowship of the Ring",
+  "Forrest Gump",
 ];
 
 const apiKey = "9fc0fef8";
