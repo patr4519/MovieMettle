@@ -57,7 +57,7 @@ const additionalMovies = [
   "Rear Window",
   "12 Angry Men",
   "Psycho",
-  "Breaking bad"
+  "Breaking bad",
 ];
 
 const apiKey = "9fc0fef8";
@@ -89,8 +89,8 @@ export const fetchMovies = createAsyncThunk(
 export const fetchAdditionalMovies = createAsyncThunk(
   "movies/fetchAdditionalMoviesStatus",
   async (numMovies) => {
-    console.log(numMovies)
-    let newList = additionalMovies.slice(numMovies, numMovies+10);
+    console.log(numMovies);
+    let newList = additionalMovies.slice(numMovies, numMovies + 10);
     try {
       const requests = newList.map((item) =>
         axios.get(`http://www.omdbapi.com/?t=${item}&apikey=${apiKey}`)
@@ -133,7 +133,7 @@ const moviesSlice = createSlice({
     });
     builder.addCase(fetchAdditionalMovies.fulfilled, (state, action) => {
       state.status = "fulfilled";
-      state.items.push(...action.payload)
+      state.items.push(...action.payload);
     });
   },
 });
