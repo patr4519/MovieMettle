@@ -11,6 +11,15 @@ const initialMovies = [
   "Back to the Future",
   "Fight Club",
 ];
+
+const additionalMovies = [
+  "Breaking bad",
+  "Chevalier",
+  "Plan",
+  "To catch a killer",
+  "Cherry"
+];
+
 const apiKey = "9fc0fef8";
 
 export const fetchMovies = createAsyncThunk(
@@ -37,6 +46,23 @@ export const fetchMovies = createAsyncThunk(
   }
 );
 
+export const fetchAdditionalMovies = createAsyncThunk(
+  "movies/fetchAdditionalMoviesStatus",
+  async () => {
+    try {
+      const requests = additionalMovies.map((item) =>
+        axios.get(`http://www.omdbapi.com/?t=${item}&apikey=${apiKey}`)
+      );
+      const responses = await Promise.all(requests);
+      const items = responses.map((r) => r.data);
+      return items;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+);
+
 const initialState = {
   items: [],
   status: "idle",
@@ -45,7 +71,11 @@ const initialState = {
 const moviesSlice = createSlice({
   name: "movies",
   initialState,
-  reducers: {},
+  reducers: {
+    addAdditionalMovies: (state, action) => {
+      console.log(action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchMovies.fulfilled, (state, action) => {
       state.status = "fulfilled";
@@ -59,8 +89,14 @@ const moviesSlice = createSlice({
       state.status = "rejected";
       state.items = [];
     });
+    builder.addCase(fetchAdditionalMovies.fulfilled, (state, action) => {
+      state.status = "fulfilled";
+      state.items.push(...action.payload)
+    });
   },
 });
+
+export const { addAdditionalMovies } = moviesSlice.actions;
 
 export const selectMovies = (state) => state.movies;
 

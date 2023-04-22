@@ -6,15 +6,14 @@ import NotFoundCard from "../components/NotFoundCard";
 import Skeleton from "../components/Skeleton";
 import Toast from "../components/Toast";
 import { add } from "../redux/slices/favoritesSlice";
-import { fetchMovies } from "../redux/slices/movieSlice";
+import { addAdditionalMovies, fetchAdditionalMovies, fetchMovies } from "../redux/slices/movieSlice";
 import { selectMovies } from "../redux/slices/movieSlice";
 import { addCurUser } from "../redux/slices/curUserSlice";
-
 
 function Home() {
   const dispatch = useDispatch();
   const { items, status } = useSelector(selectMovies);
-
+  
   function response(items) {
     if (items.every((obj) => obj.Response === "True")) {
       const cardList = items.map((item, index) => {
@@ -47,6 +46,23 @@ function Home() {
     }
     dispatch(fetchMovies());
   }, [dispatch]);
+
+  React.useEffect(() => {
+    function handleScroll() {
+      if (
+        window.innerHeight + document.documentElement.scrollTop >=
+        document.documentElement.offsetHeight
+      ) {
+        dispatch(fetchAdditionalMovies())
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [dispatch])
 
   return (
     <div className="Home">
