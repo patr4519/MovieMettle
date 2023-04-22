@@ -15,7 +15,8 @@ const initialMovies = [
   "Forrest Gump",
 ];
 
-const apiKey = "9fc0fef8";
+const apiKey = "310eae5d";
+// another key 9fc0fef8 (1000 requests per day for 1 key)
 
 export const fetchMovies = createAsyncThunk(
   "movies/fetchMoviesStatus",

@@ -6,6 +6,7 @@ import Favorites from "./pages/Favorites";
 
 // mockAPI: accForRedmi3pro@gmail.com 
 // https://64116313e96e5254e2d3e6c8.mockapi.io/favorites
+// apiKey = "310eae5d";
 
 function App() {
   return (
