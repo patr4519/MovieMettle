@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import additionalMovies from "../../assets/listOfMovies";
 
 const initialMovies = [
   "The Godfather",
@@ -13,51 +14,6 @@ const initialMovies = [
   "Pulp Fiction",
   "Back to the Future",
   "Fight Club",
-];
-
-const additionalMovies = [
-  "The Godfather: Part II",
-  "The Lord of the Rings: The Fellowship of the Ring",
-  "The Silence of the Lambs",
-  "The Matrix",
-  "Star Wars: Episode IV - A New Hope",
-  "The Lord of the Rings: The Return of the King",
-  "Goodfellas",
-  "Seven Samurai",
-  "City of God",
-  "The Prestige",
-  "The Departed",
-  "Saving Private Ryan",
-  "Gladiator",
-  "Inception",
-  "The Lion King",
-  "The Usual Suspects",
-  "The Intouchables",
-  "Amélie",
-  "The Truman Show",
-  "Titanic",
-  "The Terminator",
-  "Aliens",
-  "Jaws",
-  "The Exorcist",
-  "Jurassic Park",
-  "The Shining",
-  "Blade Runner",
-  "The Good, the Bad and the Ugly",
-  "The Magnificent Seven",
-  "One Flew Over the Cuckoo's Nest",
-  "A Clockwork Orange",
-  "Apocalypse Now",
-  "The Bridge on the River Kwai",
-  "Lawrence of Arabia",
-  "Gone with the Wind",
-  "Casablanca",
-  "Citizen Kane",
-  "It's a Wonderful Life",
-  "Rear Window",
-  "12 Angry Men",
-  "Psycho",
-  "Breaking bad",
 ];
 
 const apiKey = "9fc0fef8";
@@ -89,7 +45,6 @@ export const fetchMovies = createAsyncThunk(
 export const fetchAdditionalMovies = createAsyncThunk(
   "movies/fetchAdditionalMoviesStatus",
   async (numMovies) => {
-    console.log(numMovies);
     let newList = additionalMovies.slice(numMovies, numMovies + 10);
     try {
       const requests = newList.map((item) =>
