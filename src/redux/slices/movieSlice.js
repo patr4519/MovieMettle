@@ -44,6 +44,7 @@ export const fetchMovies = createAsyncThunk(
 export const fetchAdditionalMovies = createAsyncThunk(
   "movies/fetchAdditionalMoviesStatus",
   async (numMovies) => {
+    console.log(numMovies)
     let newList = additionalMovies.slice(numMovies, numMovies + 10);
     try {
       const requests = newList.map((item) =>

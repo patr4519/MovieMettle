@@ -55,7 +55,11 @@ function Home() {
         window.innerHeight + document.documentElement.scrollTop >=
         document.documentElement.offsetHeight
       ) {
-        numMovieRef.current += 11;
+        if (numMovieRef.current < 0) {
+          numMovieRef.current += 1;
+        } else {
+          numMovieRef.current += 10;
+        }
         dispatch(fetchAdditionalMovies(numMovieRef.current))
       }
     }
