@@ -2,7 +2,6 @@ const additionalMovies = [
   "Fight Club",
   "Inception",
   "The Lord of the Rings: The Two Towers",
-  "The Matrix",
   "Goodfellas",
   "Star Wars: Episode V - The Empire Strikes Back",
   "Se7en",
@@ -210,6 +209,7 @@ const additionalMovies = [
   "The Sixth Sense",
   "The Green Mile",
   "The Usual Suspects",
+  "The Lord of the Rings: The Fellowship of the Ring",
   "Heat",
   "L.A. Confidential",
   "Saving Private Ryan",
@@ -227,6 +227,7 @@ const additionalMovies = [
   "Aliens",
   "Predator",
   "The Empire Strikes Back",
+  "The Lord of the Rings: The Return of the King",
 ];
 
 export default additionalMovies;

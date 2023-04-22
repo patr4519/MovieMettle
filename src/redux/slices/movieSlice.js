@@ -9,10 +9,10 @@ const initialMovies = [
   "The Dark Knight",
   "12 Angry Men",
   "Schindler's List",
-  "The Lord of the Rings: The Return of the King",
+  "Fight Club",
   "Pulp Fiction",
-  "The Lord of the Rings: The Fellowship of the Ring",
   "Forrest Gump",
+  "The Matrix",
 ];
 
 const apiKey = "310eae5d";
@@ -45,7 +45,6 @@ export const fetchMovies = createAsyncThunk(
 export const fetchAdditionalMovies = createAsyncThunk(
   "movies/fetchAdditionalMoviesStatus",
   async (numMovies) => {
-    console.log(numMovies)
     let newList = additionalMovies.slice(numMovies, numMovies + 10);
     try {
       const requests = newList.map((item) =>
@@ -69,11 +68,7 @@ const initialState = {
 const moviesSlice = createSlice({
   name: "movies",
   initialState,
-  reducers: {
-    addAdditionalMovies: (state, action) => {
-      console.log(action.payload);
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchMovies.fulfilled, (state, action) => {
       state.status = "fulfilled";
@@ -93,8 +88,6 @@ const moviesSlice = createSlice({
     });
   },
 });
-
-export const { addAdditionalMovies } = moviesSlice.actions;
 
 export const selectMovies = (state) => state.movies;
 
