@@ -4,6 +4,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addCurUser } from "../../redux/slices/curUserSlice";
 import { add } from "../../redux/slices/favoritesSlice";
+import close from "../../img/closeFlashError.svg";
 
 const LoginingForm = ({ setSignIn }) => {
   const [login, setLogin] = useState("");
@@ -53,7 +54,8 @@ const LoginingForm = ({ setSignIn }) => {
       <form onSubmit={handleSubmit}>
         {flashError && (
           <div className={styles.flashError}>
-            Incorrect username or password.{" "}
+            Incorrect username or password.
+            <img onClick={() => setFlashError(prev => !prev)} className={styles.close} height={16} width={16} src={close} alt="close" />
           </div>
         )}
         <input

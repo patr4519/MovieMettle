@@ -25,6 +25,13 @@
     border-radius: 6px;
     border-color: #ce9e99;
     background-color: #ffebe9;
+    position: relative;
+
+    .close {
+      position: absolute;
+      top: 16px;
+      right: 10px;
+    }
   }
 }
 
