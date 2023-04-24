@@ -1,15 +1,17 @@
 import styles from "./LoginingForm.module.scss";
 import React, { useState } from "react";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addCurUser } from "../../redux/slices/curUserSlice";
 import { add } from "../../redux/slices/favoritesSlice";
 import close from "../../img/closeFlashError.svg";
+import eyeOpen from "../../img/eyeOpen.svg";
+import axios from "axios";
 
 const LoginingForm = ({ setSignIn }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [flashError, setFlashError] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
   const handleLoginChange = (event) => {
@@ -18,6 +20,10 @@ const LoginingForm = ({ setSignIn }) => {
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+  };
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
   };
 
   const handleSubmit = async (event) => {
@@ -55,7 +61,14 @@ const LoginingForm = ({ setSignIn }) => {
         {flashError && (
           <div className={styles.flashError}>
             Incorrect username or password.
-            <img onClick={() => setFlashError(prev => !prev)} className={styles.close} height={16} width={16} src={close} alt="close" />
+            <img
+              onClick={() => setFlashError((prev) => !prev)}
+              className={styles.close}
+              height={16}
+              width={16}
+              src={close}
+              alt="close"
+            />
           </div>
         )}
         <input
@@ -66,12 +79,20 @@ const LoginingForm = ({ setSignIn }) => {
           placeholder="Login"
         />
         <input
-          type="password"
+          type={showPassword ? "text" : "password"}
           name="password"
           value={password}
           onChange={handlePasswordChange}
           placeholder="Password"
         />
+        {password && (
+          <img
+            className={styles.eyeOpen}
+            onClick={handleTogglePassword}
+            src={eyeOpen}
+            alt="eye"
+          />
+        )}
         <button className={styles.login} type="submit">
           Login
         </button>
