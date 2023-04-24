@@ -6,6 +6,7 @@ import { add } from "../../redux/slices/favoritesSlice";
 import close from "../../img/closeFlashError.svg";
 import eyeOpen from "../../img/eyeOpen.svg";
 import axios from "axios";
+import { createPortal } from "react-dom";
 
 const LoginingForm = ({ setSignIn }) => {
   const [login, setLogin] = useState("");
@@ -55,56 +56,61 @@ const LoginingForm = ({ setSignIn }) => {
   };
 
   return (
-    <div className={styles["form-container"]}>
-      <h2>Sign In</h2>
-      <form onSubmit={handleSubmit}>
-        {flashError && (
-          <div className={styles.flashError}>
-            Incorrect username or password.
-            <img
-              onClick={() => setFlashError((prev) => !prev)}
-              className={styles.close}
-              height={16}
-              width={16}
-              src={close}
-              alt="close"
+    <>
+      {createPortal(
+        <div className={styles["form-container"]}>
+          <h2>Sign In</h2>
+          <form onSubmit={handleSubmit}>
+            {flashError && (
+              <div className={styles.flashError}>
+                Incorrect username or password.
+                <img
+                  onClick={() => setFlashError((prev) => !prev)}
+                  className={styles.close}
+                  height={16}
+                  width={16}
+                  src={close}
+                  alt="close"
+                />
+              </div>
+            )}
+            <input
+              type="text"
+              name="login"
+              value={login}
+              onChange={handleLoginChange}
+              placeholder="Login"
             />
-          </div>
-        )}
-        <input
-          type="text"
-          name="login"
-          value={login}
-          onChange={handleLoginChange}
-          placeholder="Login"
-        />
-        <input
-          type={showPassword ? "text" : "password"}
-          name="password"
-          value={password}
-          onChange={handlePasswordChange}
-          placeholder="Password"
-        />
-        {password && (
-          <img
-            className={styles.eyeOpen}
-            onClick={handleTogglePassword}
-            src={eyeOpen}
-            alt="eye"
-          />
-        )}
-        <button className={styles.login} type="submit">
-          Login
-        </button>
-        <button
-          className={styles.close}
-          onClick={() => setSignIn((prev) => !prev)}
-          type="submit"
-        >
-          Close
-        </button>
-      </form>
-    </div>
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={password}
+              onChange={handlePasswordChange}
+              placeholder="Password"
+            />
+            {password && (
+              <img
+                className={styles.eyeOpen}
+                onClick={handleTogglePassword}
+                src={eyeOpen}
+                alt="eye"
+              />
+            )}
+            <button className={styles.login} type="submit">
+              Login
+            </button>
+            <button
+              className={styles.close}
+              onClick={() => setSignIn((prev) => !prev)}
+              type="submit"
+            >
+              Close
+            </button>
+          </form>
+        </div>,
+        document.body
+      )}
+    </>
   );
 };
 
