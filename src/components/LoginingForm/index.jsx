@@ -8,6 +8,7 @@ import { add } from "../../redux/slices/favoritesSlice";
 const LoginingForm = ({ setSignIn }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+  const [flashError, setFlashError] = useState(false);
   const dispatch = useDispatch();
 
   const handleLoginChange = (event) => {
@@ -39,7 +40,7 @@ const LoginingForm = ({ setSignIn }) => {
         }
       }
       if (!user) {
-        alert("No such user or wrong password!");
+        setFlashError((prev) => !prev);
       }
     } catch (error) {
       alert(error);
@@ -50,6 +51,11 @@ const LoginingForm = ({ setSignIn }) => {
     <div className={styles["form-container"]}>
       <h2>Sign In</h2>
       <form onSubmit={handleSubmit}>
+        {flashError && (
+          <div className={styles.flashError}>
+            Incorrect username or password.{" "}
+          </div>
+        )}
         <input
           type="text"
           name="login"
