@@ -1,12 +1,12 @@
 import styles from "./LoginingForm.module.scss";
 import React, { useState } from "react";
+import { createPortal } from "react-dom";
 import { useDispatch } from "react-redux";
 import { addCurUser } from "../../redux/slices/curUserSlice";
 import { add } from "../../redux/slices/favoritesSlice";
 import close from "../../img/closeFlashError.svg";
 import eyeOpen from "../../img/eyeOpen.svg";
 import axios from "axios";
-import { createPortal } from "react-dom";
 
 const LoginingForm = ({ setSignIn }) => {
   const [login, setLogin] = useState("");

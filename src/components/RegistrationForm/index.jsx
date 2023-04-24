@@ -1,5 +1,6 @@
 import styles from "./RegistrationForm.module.scss";
 import React, { useState } from "react";
+import { createPortal } from "react-dom";
 import axios from "axios";
 import eyeOpen from "../../img/eyeOpen.svg";
 import timestampToDate from "../../functions/timestampToDate";
@@ -36,43 +37,48 @@ const RegistrationForm = ({ setSignUp }) => {
   };
 
   return (
-    <div className={styles["form-container"]}>
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="login"
-          value={login}
-          onChange={handleLoginChange}
-          placeholder="Login"
-        />
-        <input
-          type={showPassword ? "text" : "password"}
-          name="password"
-          value={password}
-          onChange={handlePasswordChange}
-          placeholder="Password"
-        />
-        {password && (
-          <img
-            className={styles.eyeOpen}
-            onClick={handleTogglePassword}
-            src={eyeOpen}
-            alt="eye"
-          />
-        )}
-        <button className={styles.register} type="submit">
-          Register
-        </button>
-        <button
-          className={styles.close}
-          onClick={() => setSignUp((prev) => !prev)}
-          type="submit"
-        >
-          Close
-        </button>
-      </form>
-    </div>
+    <>
+      {createPortal(
+        <div className={styles["form-container"]}>
+          <h2>Sign Up</h2>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="login"
+              value={login}
+              onChange={handleLoginChange}
+              placeholder="Login"
+            />
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={password}
+              onChange={handlePasswordChange}
+              placeholder="Password"
+            />
+            {password && (
+              <img
+                className={styles.eyeOpen}
+                onClick={handleTogglePassword}
+                src={eyeOpen}
+                alt="eye"
+              />
+            )}
+            <button className={styles.register} type="submit">
+              Register
+            </button>
+            <button
+              className={styles.close}
+              onClick={() => setSignUp((prev) => !prev)}
+              type="submit"
+            >
+              Close
+            </button>
+          </form>
+        </div>,
+        document.body
+      )}
+    </>
   );
 };
 
