@@ -103,7 +103,7 @@ const LoginingForm = ({ setSignIn }) => {
               />
             )}
             <button className={styles.login} type="submit">
-              Login
+              {isSubmitting ? 'Logining...' : 'Login'}
             </button>
             <button
               className={styles.close}

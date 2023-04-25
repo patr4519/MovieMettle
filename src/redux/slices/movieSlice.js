@@ -15,7 +15,7 @@ const initialMovies = [
   "The Matrix",
 ];
 
-const apiKey = "310eae5d";
+const apiKey = "9fc0fef8";
 // another key 9fc0fef8 (1000 requests per day for 1 key)
 
 export const fetchMovies = createAsyncThunk(
