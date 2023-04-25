@@ -13,6 +13,7 @@ const LoginingForm = ({ setSignIn }) => {
   const [password, setPassword] = useState("");
   const [flashError, setFlashError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const dispatch = useDispatch();
 
   const handleLoginChange = (event) => {
@@ -29,6 +30,7 @@ const LoginingForm = ({ setSignIn }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsSubmitting(true);
     try {
       const { data } = await axios.get(
         "https://64116313e96e5254e2d3e6c8.mockapi.io/Users"
@@ -52,6 +54,8 @@ const LoginingForm = ({ setSignIn }) => {
       }
     } catch (error) {
       alert(error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -60,7 +64,7 @@ const LoginingForm = ({ setSignIn }) => {
       {createPortal(
         <div className={styles["form-container"]}>
           <h2>Sign In</h2>
-          <form onSubmit={handleSubmit}>
+          <form disabled={true} onSubmit={handleSubmit}>
             {flashError && (
               <div className={styles.flashError}>
                 Incorrect username or password.
@@ -75,6 +79,7 @@ const LoginingForm = ({ setSignIn }) => {
               </div>
             )}
             <input
+              disabled={isSubmitting ? true : false}
               type="text"
               name="login"
               value={login}
@@ -82,6 +87,7 @@ const LoginingForm = ({ setSignIn }) => {
               placeholder="Login"
             />
             <input
+              disabled={isSubmitting ? true : false}
               type={showPassword ? "text" : "password"}
               name="password"
               value={password}
