@@ -25,12 +25,19 @@ const RegistrationForm = ({ setSignUp }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("https://64116313e96e5254e2d3e6c8.mockapi.io/Users", {
-        login: login,
-        password: password,
-        created: timestampToDate(Date.now()),
-      });
-      setSignUp((prev) => !prev);
+      const { data } = await axios.get(
+        "https://64116313e96e5254e2d3e6c8.mockapi.io/Users"
+      );
+      if (!data.some((user) => user.login === login)) {
+        await axios.post("https://64116313e96e5254e2d3e6c8.mockapi.io/Users", {
+          login: login,
+          password: password,
+          created: timestampToDate(Date.now()),
+        });
+        setSignUp((prev) => !prev);
+      } else {
+        alert('such user already exist')
+      }
     } catch (error) {
       alert(error);
     }
