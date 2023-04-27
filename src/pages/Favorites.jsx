@@ -70,7 +70,16 @@ const Favorites = () => {
           {cardList}
         </>
       ) : (
-        <EmptyFavorites />
+        <>
+          <EmptyFavorites />
+          <button
+            className="save-button empty"
+            disabled={enableButton}
+            onClick={handleSave}
+          >
+            {enableButton ? "Saving..." : "Save empty list"}
+          </button>
+        </>
       )}
     </div>
   );
