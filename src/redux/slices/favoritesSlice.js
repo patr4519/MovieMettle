@@ -33,10 +33,11 @@ const favoritesSlice = createSlice({
         state.items.sort(compareByDate);
       }
       if (action.payload === "Order") {
-        
+        const movies = JSON.parse(localStorage.getItem("curUser")).favorites;
+        state.items = movies;
       }
       if (action.payload === "Your Rate") {
-        state.items.sort(compareByRate)
+        state.items.sort(compareByRate);
       }
     },
     addRate: (state, action) => {
@@ -48,12 +49,13 @@ const favoritesSlice = createSlice({
     },
     clearFavorites: () => {
       return initialState;
-    }
+    },
   },
 });
 
 export const selectFavorites = (state) => state.favorites;
 
-export const { add, remove, sortBy, addRate, clearFavorites } = favoritesSlice.actions;
+export const { add, remove, sortBy, addRate, clearFavorites } =
+  favoritesSlice.actions;
 
 export default favoritesSlice.reducer;
