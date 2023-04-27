@@ -4,6 +4,11 @@ import { createPortal } from "react-dom";
 import axios from "axios";
 import eyeOpen from "../../img/eyeOpen.svg";
 import timestampToDate from "../../functions/timestampToDate";
+import { SHA256 } from 'crypto-js';
+
+function sha256(str) {
+  return SHA256(str).toString();
+}
 
 const RegistrationForm = ({ setSignUp }) => {
   const [login, setLogin] = useState("");
@@ -31,7 +36,7 @@ const RegistrationForm = ({ setSignUp }) => {
       if (!data.some((user) => user.login === login)) {
         await axios.post("https://64116313e96e5254e2d3e6c8.mockapi.io/Users", {
           login: login.toLocaleLowerCase(),
-          password: password,
+          password: sha256(password),
           created: timestampToDate(Date.now()),
         });
         setSignUp((prev) => !prev);

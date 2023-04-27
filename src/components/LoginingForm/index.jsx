@@ -7,6 +7,11 @@ import { add } from "../../redux/slices/favoritesSlice";
 import close from "../../img/closeFlashError.svg";
 import eyeOpen from "../../img/eyeOpen.svg";
 import axios from "axios";
+import { SHA256 } from 'crypto-js';
+
+function sha256(str) {
+  return SHA256(str).toString();
+}
 
 const LoginingForm = ({ setSignIn }) => {
   const [login, setLogin] = useState("");
@@ -38,7 +43,7 @@ const LoginingForm = ({ setSignIn }) => {
       let user = null;
 
       for (let i = 0; i < data.length; i++) {
-        if (data[i].login === login.toLocaleLowerCase() && data[i].password === password) {
+        if (data[i].login === login.toLocaleLowerCase() && data[i].password === sha256(password)) {
           user = data[i];
           dispatch(addCurUser(user));
           localStorage.setItem("curUser", JSON.stringify(user));
