@@ -11,7 +11,6 @@ export const list = [
 ];
 
 const MyPopupForm = () => {
-  const [open] = React.useState(true);
   const [category, setCategory] = React.useState("Order");
   const dispatch = useDispatch();
 
@@ -24,19 +23,16 @@ const MyPopupForm = () => {
     <div className="sort_popup">
       <div>
         <span className="sortBy">Sort by:</span>
-        {category}
       </div>
-      {open && (
-        <ul>
+      <ul>
           {list.map((obj, i) => {
             return (
-              <li onClick={() => changeCategory(obj.name)} key={i}>
+              <li className={`${obj.name === category ? 'selected' : ''}`} onClick={() => changeCategory(obj.name)} key={i}>
                 {obj.name}
               </li>
             );
           })}
         </ul>
-      )}
     </div>
   );
 };

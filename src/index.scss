@@ -151,6 +151,10 @@ button[type="submit"]:hover {
       list-style-type: none;
       user-select: none;
     }
+    .selected {
+      background-color: #3f3b3b;
+      color: white;
+    }
   }
 }
 
