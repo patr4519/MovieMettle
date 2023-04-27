@@ -79,6 +79,7 @@ const LoginingForm = ({ setSignIn }) => {
               </div>
             )}
             <input
+              required
               disabled={isSubmitting ? true : false}
               type="text"
               name="login"
@@ -87,6 +88,7 @@ const LoginingForm = ({ setSignIn }) => {
               placeholder="Login"
             />
             <input
+              required
               disabled={isSubmitting ? true : false}
               type={showPassword ? "text" : "password"}
               name="password"
