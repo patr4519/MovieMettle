@@ -38,7 +38,7 @@ const LoginingForm = ({ setSignIn }) => {
       let user = null;
 
       for (let i = 0; i < data.length; i++) {
-        if (data[i].login === login && data[i].password === password) {
+        if (data[i].login === login.toLocaleLowerCase() && data[i].password === password) {
           user = data[i];
           dispatch(addCurUser(user));
           localStorage.setItem("curUser", JSON.stringify(user));

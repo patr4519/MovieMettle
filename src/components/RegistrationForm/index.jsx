@@ -30,7 +30,7 @@ const RegistrationForm = ({ setSignUp }) => {
       );
       if (!data.some((user) => user.login === login)) {
         await axios.post("https://64116313e96e5254e2d3e6c8.mockapi.io/Users", {
-          login: login,
+          login: login.toLocaleLowerCase(),
           password: password,
           created: timestampToDate(Date.now()),
         });
