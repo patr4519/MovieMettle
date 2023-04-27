@@ -28,7 +28,7 @@ const Header = () => {
     localStorage.clear();
     dispatch(clearCurUser());
     dispatch(clearFavorites());
-    setShowSign(prev => !prev);
+    setShowSign(false);
   };
 
   return (
