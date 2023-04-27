@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./CardItem.module.scss";
-import { useDispatch } from "react-redux";
-import { add } from "../../redux/slices/favoritesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { add, selectFavorites } from "../../redux/slices/favoritesSlice";
 import favItem from "../../img/favItem.png";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,9 +18,14 @@ const CardItem = ({
   ratings,
 }) => {
   const dispatch = useDispatch();
+  const { items } = useSelector(selectFavorites);
 
   const addToFav = (item) => {
-    const item1 = {...item, rate: null};
+    if (items.some(movie => movie.Title === item.Title)) {
+      toast.warn("Already added in favorites!");
+      return;
+    }
+    const item1 = { ...item, rate: null };
     dispatch(add(item1));
     toast.success("Added to favorites!");
   };
