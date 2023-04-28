@@ -84,6 +84,7 @@ const LoginingForm = ({ setSignIn }) => {
               </div>
             )}
             <input
+              autoFocus
               required
               disabled={isSubmitting ? true : false}
               type="text"

@@ -55,6 +55,7 @@ const RegistrationForm = ({ setSignUp }) => {
           <h2>Sign Up</h2>
           <form onSubmit={handleSubmit}>
             <input
+              autoFocus
               type="text"
               name="login"
               value={login}
