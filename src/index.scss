@@ -24,32 +24,32 @@ body {
       justify-content: center;
       position: relative;
 
-      .searchIcon {
-        z-index: 2;
-        position: absolute;
-        top: 17px;
-        right: 160px;
-        &:hover {
-          cursor: pointer;
-        }
-      }
+      // .searchIcon {
+      //   z-index: 2;
+      //   position: absolute;
+      //   top: 17px;
+      //   right: 160px;
+      //   &:hover {
+      //     cursor: pointer;
+      //   }
+      // }
 
-      .line {
-        position: absolute;
-        top: 9px;
-        right: 170px;
-      }
+      // .line {
+      //   position: absolute;
+      //   top: 9px;
+      //   right: 170px;
+      // }
 
-      .clearIcon {
-        z-index: 2;
-        position: absolute;
-        width: 30px;
-        top: 16px;
-        right: 195px;
-        &:hover {
-          cursor: pointer;
-        }
-      }
+      // .clearIcon {
+      //   z-index: 2;
+      //   position: absolute;
+      //   width: 30px;
+      //   top: 16px;
+      //   right: 195px;
+      //   &:hover {
+      //     cursor: pointer;
+      //   }
+      // }
     }
 
     .cardList {
@@ -76,6 +76,10 @@ input[type="text"] {
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   font-size: 16px;
   width: 430px;
+
+  @media (max-width: 400px) {
+    width: 200px;
+  }
 }
 
 button[type="submit"] {
