@@ -34,7 +34,7 @@ const Header = () => {
   return (
     <header>
       <div onClick={() => dispatch(fetchMovies())} className={styles.logo}>
-        <Link to="/">MovieMettle</Link>
+        <Link to="/"></Link>
       </div>
       <div className={styles.signPanel}>
         {!curUser ? (
