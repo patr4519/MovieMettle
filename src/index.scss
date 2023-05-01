@@ -10,48 +10,54 @@ body {
   position: relative;
 }
 
-.Home {
-  width: 800px;
-  margin: auto;
+.content {
+  .Home {
+    width: 800px;
+    margin: auto;
 
-  .mainInput {
-    display: flex;
-    justify-content: center;
-    position: relative;
+    @media (max-width: 800px) {
+      width: 600px;
+    }
 
-    .searchIcon {
-      z-index: 2;
-      position: absolute;
-      top: 17px;
-      right: 160px;
-      &:hover {
-        cursor: pointer;
+    .mainInput {
+      display: flex;
+      justify-content: center;
+      position: relative;
+
+      .searchIcon {
+        z-index: 2;
+        position: absolute;
+        top: 17px;
+        right: 160px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .line {
+        position: absolute;
+        top: 9px;
+        right: 170px;
+      }
+
+      .clearIcon {
+        z-index: 2;
+        position: absolute;
+        width: 30px;
+        top: 16px;
+        right: 195px;
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
 
-    .line {
-      position: absolute;
-      top: 9px;
-      right: 170px;
+    .cardList {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
     }
-
-    .clearIcon {
-      z-index: 2;
-      position: absolute;
-      width: 30px;
-      top: 16px;
-      right: 195px;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-  }
-
-  .cardList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
   }
 }
 
