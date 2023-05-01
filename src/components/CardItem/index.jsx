@@ -3,6 +3,7 @@ import styles from "./CardItem.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { add, selectFavorites } from "../../redux/slices/favoritesSlice";
 import favItem from "../../img/favItem.png";
+import emptyFavItem from "../../img/emptyStar.png";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PlotModal from "../Modal";
@@ -19,15 +20,15 @@ const CardItem = ({
 }) => {
   const dispatch = useDispatch();
   const { items } = useSelector(selectFavorites);
+  const isInFavorite = items.some((movie) => movie.Title === item.Title);
 
   const addToFav = (item) => {
-    if (items.some(movie => movie.Title === item.Title)) {
+    if (items.some((movie) => movie.Title === item.Title)) {
       toast.warn("Already added in favorites!");
       return;
     }
     const item1 = { ...item, rate: null };
     dispatch(add(item1));
-    toast.success("Added to favorites!");
   };
 
   const displayRatings = () => {
@@ -64,14 +65,25 @@ const CardItem = ({
         )}
         <PlotModal plot={item.Plot} />
       </div>
-      <img
-        onClick={() => addToFav(item)}
-        className={styles.favItem}
-        width={30}
-        height={30}
-        src={favItem}
-        alt="favIcon"
-      />
+      {!isInFavorite ? (
+        <img
+          onClick={() => addToFav(item)}
+          className={styles.favItem}
+          width={30}
+          height={30}
+          src={emptyFavItem}
+          alt="emptyFavIcon"
+        />
+      ) : (
+        <img
+          className={styles.favItem}
+          onClick={() => addToFav(item)}
+          width={30}
+          height={30}
+          src={favItem}
+          alt="favIcon"
+        />
+      )}
     </div>
   );
 };
