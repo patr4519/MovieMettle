@@ -15,7 +15,7 @@ header {
     width: 600px;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 412px) {
     width: 100%;
   }
 
@@ -30,7 +30,7 @@ header {
       color: #333;
       margin-left: 10px;
 
-      @media (max-width: 400px) {
+      @media (max-width: 412px) {
         font-size: 18px;
       }
     }
@@ -105,7 +105,7 @@ header {
       color: #333;
       margin-left: 10px;
 
-      @media (max-width: 400px) {
+      @media (max-width: 412px) {
         font-size: 0px;
       }
     }
@@ -121,7 +121,7 @@ header {
       min-width: 20px;
       text-align: center;
 
-      @media (max-width: 400px) {
+      @media (max-width: 412px) {
         top: -1px;
         right: -15px;
       }
