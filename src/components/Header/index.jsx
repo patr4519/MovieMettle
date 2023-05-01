@@ -81,7 +81,7 @@ const Header = () => {
       <div className={styles.favorites}>
         <Link to="/favorites">
           <img width={30} className="favIcon" src={favIcon} alt="favIcon" />
-          Favorites
+          <span>Favorites</span>
         </Link>
         {favCount > 0 && <span className={styles.favCount}>{favCount}</span>}
       </div>
