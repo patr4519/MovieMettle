@@ -1,5 +1,4 @@
-const additionalMovies = [
-  "Fight Club",
+const additionalMovies = [ 
   "Inception",
   "The Lord of the Rings: The Two Towers",
   "Goodfellas",
