@@ -35,6 +35,13 @@ body {
       padding: 5px;
       box-sizing: border-box;
 
+      @media (max-width: 412px) {
+        width: 40px;
+        height: 40px;
+        right: 5px;
+        bottom: 60px;
+      }
+
       &::before {
         content: "\2191";
         display: block;
