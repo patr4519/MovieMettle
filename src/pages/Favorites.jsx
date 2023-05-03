@@ -24,15 +24,13 @@ const Favorites = () => {
   };
 
   React.useEffect(() => {
-    let prevScrollY = window.pageYOffset;
     const handleScroll = () => {
       const scrollY = window.pageYOffset;
-      if (scrollY > prevScrollY) {
+      if (scrollY > 0) {
         setHasScrolled(true);
       } else {
         setHasScrolled(false);
       }
-      prevScrollY = scrollY;
     };
     window.addEventListener("scroll", handleScroll);
     return () => {
