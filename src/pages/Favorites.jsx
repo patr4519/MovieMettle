@@ -14,6 +14,31 @@ const Favorites = () => {
   const { items } = useSelector(selectFavorites);
   const curUser = useSelector(selectCurUser).items[0];
   const [enableButton, setEnableButton] = React.useState(false);
+  const [hasScrolled, setHasScrolled] = React.useState(false);
+
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  React.useEffect(() => {
+    let prevScrollY = window.pageYOffset;
+    const handleScroll = () => {
+      const scrollY = window.pageYOffset;
+      if (scrollY > prevScrollY) {
+        setHasScrolled(true);
+      } else {
+        setHasScrolled(false);
+      }
+      prevScrollY = scrollY;
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const cardList = items.map((item) => {
     return (
@@ -55,6 +80,9 @@ const Favorites = () => {
 
   return (
     <div className="fav-wrapper">
+      {hasScrolled && (
+        <button className="scrollToTop" onClick={handleScrollToTop}></button>
+      )}
       <Toast />
       {items.length > 0 ? (
         <>
