@@ -9,13 +9,21 @@ import { add } from "../redux/slices/favoritesSlice";
 import { fetchAdditionalMovies, fetchMovies } from "../redux/slices/movieSlice";
 import { selectMovies } from "../redux/slices/movieSlice";
 import { addCurUser } from "../redux/slices/curUserSlice";
-import { useRef } from 'react';
+import { useRef } from "react";
 
 function Home() {
   const dispatch = useDispatch();
   const { items, status } = useSelector(selectMovies);
   const numMovieRef = useRef(-1);
-  
+  const [hasScrolled, setHasScrolled] = React.useState(false);
+
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   function response(items) {
     if (items.every((obj) => obj.Response === "True")) {
       const cardList = items.map((item, index) => {
@@ -43,8 +51,8 @@ function Home() {
   React.useEffect(() => {
     const curUser = JSON.parse(localStorage.getItem("curUser"));
     if (curUser) {
-      dispatch(addCurUser(curUser))
-      dispatch(add(curUser.favorites))
+      dispatch(addCurUser(curUser));
+      dispatch(add(curUser.favorites));
     }
     dispatch(fetchMovies());
   }, [dispatch]);
@@ -60,7 +68,7 @@ function Home() {
         } else {
           numMovieRef.current += 10;
         }
-        dispatch(fetchAdditionalMovies(numMovieRef.current))
+        dispatch(fetchAdditionalMovies(numMovieRef.current));
       }
     }
 
@@ -69,10 +77,30 @@ function Home() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [dispatch])
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    let prevScrollY = window.pageYOffset;
+    const handleScroll = () => {
+      const scrollY = window.pageYOffset;
+      if (scrollY > prevScrollY) {
+        setHasScrolled(true);
+      } else {
+        setHasScrolled(false);
+      }
+      prevScrollY = scrollY;
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div className="Home">
+      {hasScrolled && (
+        <button className="scrollToTop" onClick={handleScrollToTop}></button>
+      )}
       <MainInput />
       <Toast />
       {status === "rejected" ? (
